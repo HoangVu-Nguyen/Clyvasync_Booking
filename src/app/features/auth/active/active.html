@@ -1,0 +1,71 @@
+<div class="bg-surface font-body text-on-surface min-h-screen flex flex-col w-full overflow-x-hidden">
+    <app-header></app-header>
+
+    <!-- Nền trời và Đồi Mario -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none pixel-bg">
+        <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center gap-0">
+            <div class="w-48 h-32 bg-[#43b047] mario-hill translate-y-4"></div>
+            <div class="w-64 h-48 bg-[#2ecc71] mario-hill translate-y-8 z-10"></div>
+            <div class="w-40 h-24 bg-[#43b047] mario-hill translate-y-4"></div>
+        </div>
+    </div>
+
+    <main class="relative z-10 flex-grow flex items-center justify-center p-8">
+        <div class="w-full max-w-md bg-[#fefefe] p-8 pixel-border-outer shadow-[12px_12px_0_0_rgba(0,0,0,0.2)]">
+            
+            <header class="text-center mb-10">
+                <h1 class="font-headline text-4xl font-black text-[#ff0000] leading-tight tracking-tighter uppercase mb-4 pixel-text-shadow">
+                    VERIFY POWER-UP
+                </h1>
+                <div class="inline-flex items-center gap-3 bg-[#e1ffd8] px-4 py-2 border-4 border-black shadow-[4px_4px_0_0_#000]">
+                    <span class="material-symbols-outlined text-black">mail</span>
+                    <span class="font-label text-xs font-bold tracking-widest text-black">PLAYER_ONE@CLYVASYNC.COM</span>
+                </div>
+            </header>
+
+            <form [formGroup]="activeForm" (ngSubmit)="onConfirmCode()" class="space-y-12">
+                <!-- Dãy ô Input kiểu Question Block -->
+                <div class="flex justify-between gap-2" formArrayName="otpDigits">
+                    @for (control of otpArray.controls; track $index) {
+                        <input 
+                            [formControlName]="$index"
+                            (input)="onInput($event, $index)"
+                            class="w-12 h-14 md:w-14 md:h-16 text-center text-2xl font-black mario-input" 
+                            maxlength="1" 
+                            type="text" 
+                        />
+                    }
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Nút A Xác nhận -->
+                    <button [disabled]="activeForm.invalid" type="submit"
+                        class="w-full bg-[#ff0000] text-white py-5 font-headline font-black text-xl uppercase pixel-border-button flex items-center justify-center gap-4">
+                        <span class="w-10 h-10 rounded-full border-4 border-black flex items-center justify-center bg-white text-[#ff0000]">A</span>
+                        CONFIRM CODE
+                    </button>
+
+                    <div class="text-center">
+                        <a class="inline-block group" href="#">
+                            <span class="font-label text-sm font-bold text-[#43b047] uppercase tracking-widest group-hover:text-[#ff0000] transition-colors">
+                                RESEND LIFE (1UP)
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Status Indicator -->
+            <div class="mt-10 pt-6 border-t-4 border-black flex justify-between items-center">
+                <div class="flex gap-2">
+                    <div class="w-5 h-5 bg-[#fbd000] border-2 border-black"></div>
+                    <div class="w-5 h-5 bg-[#fbd000] border-2 border-black"></div>
+                    <div class="w-5 h-5 bg-gray-300 border-2 border-black opacity-30"></div>
+                </div>
+                <span class="font-label text-[10px] font-bold text-black tracking-widest uppercase">STAGE 1-2</span>
+            </div>
+        </div>
+    </main>
+
+    <app-footer></app-footer>
+</div>

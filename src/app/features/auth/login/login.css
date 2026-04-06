@@ -1,0 +1,4 @@
+.pixelated {
+    image-rendering: pixelated; /* Safari, Chrome, Edge */
+    image-rendering: crisp-edges; /* Firefox */
+}

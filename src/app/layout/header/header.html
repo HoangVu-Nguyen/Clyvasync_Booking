@@ -1,0 +1,39 @@
+<header
+  class="bg-[#e1ffd8] dark:bg-emerald-950 flex justify-between items-center w-full px-1 py-4 max-w-none border-b-4 border-emerald-800/10 shadow-[0_20px_40px_-15px_rgba(0,55,8,0.06)] relative z-50">
+  <!-- LOGO: Quay về trang chủ -->
+  <a href="/"
+    class="text-2xl font-bold tracking-tighter text-[#bb000c] uppercase font-headline hover:scale-105 transition-transform active:translate-y-0.5">
+    Clyvasync
+  </a>
+
+  <div class="flex gap-4 md:gap-8 items-center">
+    <!-- LINK PHỤ: Ẩn bớt trên mobile để tránh rối -->
+    <nav class="hidden sm:flex gap-6 items-center border-r-2 border-emerald-800/10 pr-6">
+      <a class="text-emerald-900 dark:text-emerald-100 opacity-60 font-['Inter'] text-xs font-bold uppercase tracking-wider hover:opacity-100 hover:text-[#108a25] transition-all"
+        href="#">Support</a>
+      <a class="text-emerald-900 dark:text-emerald-100 opacity-60 font-['Inter'] text-xs font-bold uppercase tracking-wider hover:opacity-100 hover:text-[#108a25] transition-all"
+        href="#">FAQ</a>
+    </nav>
+
+    <!-- HÀNH ĐỘNG CHÍNH: Thay đổi tùy theo trang -->
+    <div class="flex items-center gap-3">
+      <span class="hidden md:block text-[10px] font-bold uppercase text-emerald-900/40 tracking-tighter">
+        New Player?
+      </span>
+
+      <!-- Nút Register (Dùng cho trang Login) -->
+      <button routerLink="/register"
+        class="bg-[#bb000c] text-[#ffefed] px-5 py-2 font-headline font-bold uppercase text-sm pixel-border-primary hover:bg-[#ff5b4c] transition-colors active:translate-y-1 step-animation flex items-center gap-2">
+        <span class="material-symbols-outlined text-sm">person_add</span>
+        Join Now
+      </button>
+
+      <!-- Nút Login (Dùng cho trang Register/Forgot) - Có thể ẩn/hiện bằng logic Angular -->
+      <!-- 
+      <button class="text-emerald-900 dark:text-emerald-100 font-headline font-bold uppercase text-sm hover:underline decoration-2 underline-offset-4 active:translate-y-0.5">
+        Login
+      </button> 
+      -->
+    </div>
+  </div>
+</header>

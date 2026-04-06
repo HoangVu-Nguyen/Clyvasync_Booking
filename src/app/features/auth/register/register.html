@@ -1,0 +1,114 @@
+<div class="pixel-bg-mario font-body text-on-surface min-h-screen flex flex-col w-full overflow-x-hidden">
+
+    <app-header></app-header>
+
+    <main class="flex-grow flex items-center justify-center p-4 relative overflow-y-auto">
+
+        <!-- TRANG TRÍ NỀN -->
+        <div class="mario-cloud top-20 left-[10%] opacity-80 animate-pulse hidden md:block"></div>
+        <div class="mario-cloud top-40 right-[15%] opacity-80 hidden md:block"></div>
+        <div class="mario-pipe absolute bottom-0 left-10 w-20 h-32 hidden md:block z-0"></div>
+        <div class="mario-pipe absolute bottom-0 right-20 w-16 h-20 hidden md:block z-0"></div>
+
+        <!-- Ngọn đồi Mario -->
+        <div
+            class="absolute bottom-0 left-0 right-0 flex items-end justify-center gap-0 pointer-events-none opacity-100">
+            <div class="w-64 h-32 bg-[#43b047] mario-hill-bg translate-x-12 scale-90"></div>
+            <div class="w-96 h-56 bg-[#2ecc71] mario-hill-bg z-10"></div>
+            <div class="w-48 h-24 bg-[#43b047] mario-hill-bg -translate-x-12 scale-75"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-lg">
+            <!-- Card Gạch -->
+            <div class="brick-card p-1 shadow-[12px_12px_0_0_rgba(0,0,0,0.4)]">
+                <div class="bg-[#fce4b3] p-6 md:p-8 border-4 border-black">
+
+                    <div class="mb-6 flex flex-col items-center text-center">
+                        <div
+                            class="bg-[#fbd000] w-16 h-16 mb-4 border-4 border-black animate-bounce shadow-[inset_-4px_-4px_0_0_#eb8b00,4px_4px_0_0_#000] flex items-center justify-center">
+                            <span class="text-4xl font-black text-black">?</span>
+                        </div>
+                        <h1
+                            class="text-3xl md:text-4xl font-black font-headline uppercase pixel-text-shadow tracking-tighter text-[#ff0000]">
+                            NEW PLAYER
+                        </h1>
+                        <div class="bg-black text-[#fbd000] px-3 py-1 mt-2 inline-block border-2 border-black">
+                            <p class="text-[10px] font-bold uppercase tracking-widest">WORLD 1-1: REGISTRATION</p>
+                        </div>
+                    </div>
+
+                    <form [formGroup]="registerForm" (ngSubmit)="onStartAdventure()"
+                        class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                        <!-- CÁC Ô INPUT CHUẨN MARIO -->
+                        <div class="space-y-1">
+                            <label class="block text-[10px] font-black uppercase text-black">PLAYER ID</label>
+                            <input formControlName="username" class="w-full mario-input p-2 font-bold text-sm"
+                                type="text" placeholder="MARIO_99" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-[10px] font-black uppercase text-black">EMAIL</label>
+                            <input formControlName="email" class="w-full mario-input p-2 font-bold text-sm" type="email"
+                                placeholder="HERO@KINGDOM.COM" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-[10px] font-black uppercase text-black">SECRET KEY</label>
+                            <input formControlName="password" class="w-full mario-input p-2 font-bold text-sm"
+                                type="password" placeholder="••••••••" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-[10px] font-black uppercase text-black">CONFIRM KEY</label>
+                            <input formControlName="confirmPassword" class="w-full mario-input p-2 font-bold text-sm"
+                                type="password" placeholder="••••••••" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-[10px] font-black uppercase text-black">BIRTH DATE</label>
+                            <input formControlName="birthDate" class="w-full mario-input p-2 font-bold text-sm"
+                                type="date" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-[10px] font-black uppercase text-black">PHONE</label>
+                            <input formControlName="phoneNumber" class="w-full mario-input p-2 font-bold text-sm"
+                                type="text" placeholder="090..." />
+                        </div>
+
+                        <!-- NÚT A ACTION (ĐÃ ÉP 100% TAILWIND) -->
+                        <div class="md:col-span-2 pt-6 mt-4">
+                            <button [disabled]="registerForm.invalid || isLoading"
+                                class="w-full flex items-center justify-between px-6 py-4 bg-[#ff0000] border-4 border-black cursor-pointer shadow-[0_8px_0_0_#a40009] hover:brightness-110 active:translate-y-2 active:shadow-[0_0px_0_0_#a40009] disabled:bg-[#7f8c8d] disabled:shadow-[0_4px_0_0_#4d5656] disabled:translate-y-1 disabled:cursor-not-allowed disabled:grayscale transition-all duration-100 group"
+                                type="submit">
+
+                                <!-- Chữ START ADVENTURE -->
+                                <span
+                                    class="font-black font-headline text-xl md:text-2xl tracking-tighter uppercase text-white drop-shadow-[2px_2px_0_rgba(0,0,0,1)] group-disabled:text-gray-300">
+                                    {{ isLoading ? 'LOADING...' : 'START ADVENTURE' }}
+                                </span>
+
+                                <!-- Vòng tròn chữ A -->
+                                <div
+                                    class="w-12 h-12 flex-shrink-0 bg-white border-4 border-black rounded-full flex items-center justify-center text-[#ff0000] font-black text-2xl shadow-[inset_-3px_-3px_0_#bdc3c7] group-disabled:text-gray-500 group-disabled:shadow-none">
+                                    A
+                                </div>
+
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Cảnh báo lỗi Password -->
+                    <p *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched"
+                        class="bg-[#ff0000] text-white border-4 border-black p-2 text-[10px] font-black text-center mt-4 uppercase animate-pulse">
+                        ! ERROR: Passwords do not match !
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <app-footer></app-footer>
+</div>

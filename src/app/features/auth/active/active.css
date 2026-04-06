@@ -1,0 +1,184 @@
+/* 1. Reset & Base */
+.pixel-bg {
+    background: linear-gradient(to bottom, #e1ffd8 0%, #c9ffbf 100%);
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(16, 138, 37, 0.05) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(16, 138, 37, 0.05) 2px, transparent 2px);
+}
+
+/* 2. Viền Pixel chuẩn (Double Border) */
+.pixel-border-outer {
+    position: relative;
+    border: none;
+    /* Lớp đổ bóng tạo viền đen đặc trưng của pixel art */
+    box-shadow: 
+        0 -4px 0 0 #003708,
+        0 4px 0 0 #003708,
+        -4px 0 0 0 #003708,
+        4px 0 0 0 #003708;
+}
+
+/* 3. Khung Card chính (Thêm đổ bóng cứng phía dưới) */
+main .pixel-border-outer {
+    box-shadow: 
+        0 -4px 0 0 #003708,
+        0 4px 0 0 #003708,
+        -4px 0 0 0 #003708,
+        4px 0 0 0 #003708,
+        12px 12px 0 0 rgba(0, 55, 8, 0.15); /* Hard shadow cho card */
+}
+
+/* 4. Nút bấm 3D Pixel (Button A style) */
+.pixel-border-button {
+    position: relative;
+    border: none;
+    background-color: var(--primary);
+    /* Tạo khối 3D bằng cách thêm bóng sáng ở trên và bóng tối ở dưới nội bộ */
+    box-shadow: 
+        inset 0 4px 0 0 rgba(255, 255, 255, 0.3),
+        inset 0 -4px 0 0 rgba(0, 0, 0, 0.3),
+        0 -4px 0 0 #003708,
+        0 4px 0 0 #003708,
+        -4px 0 0 0 #003708,
+        4px 0 0 0 #003708;
+    transition: transform 0.05s steps(2);
+}
+
+.pixel-border-button:active {
+    transform: translateY(4px);
+    box-shadow: 
+        inset 0 0px 0 0 rgba(255, 255, 255, 0.3),
+        inset 0 0px 0 0 rgba(0, 0, 0, 0.3),
+        0 -4px 0 0 #003708,
+        0 0px 0 0 #003708,
+        -4px 0 0 0 #003708,
+        4px 0 0 0 #003708;
+}
+
+/* 5. OTP Inputs (Tối ưu focus) */
+input.pixel-border-outer {
+    transition: all 0.1s steps(2);
+}
+
+input.pixel-border-outer:focus {
+    background-color: #a0d8ff !important;
+    transform: scale(1.05);
+    z-index: 20;
+    box-shadow: 
+        0 -4px 0 0 #00628a,
+        0 4px 0 0 #00628a,
+        -4px 0 0 0 #00628a,
+        4px 0 0 0 #00628a !important;
+}
+
+/* 6. Animations 8-bit */
+@keyframes bounce-pixel {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.animate-bounce {
+    animation: bounce-pixel 1s infinite steps(4); /* Steps(4) tạo cảm giác giật giật retro */
+}
+
+/* 7. Hills (Đổ bóng cho các ngọn đồi ở background) */
+.pixel-hills > div {
+    box-shadow: inset -8px 0 0 0 rgba(0,0,0,0.1);
+}
+/* 1. MÀU SẮC CHỦ ĐẠO MARIO */
+:root {
+    --mario-red: #ff0000;
+    --mario-blue: #049cd8;
+    --mario-yellow: #fbd000;
+    --mario-green: #43b047;
+    --brick-brown: #964b00;
+    --pipe-green: #2ecc71;
+}
+
+/* 2. HIỆU ỨNG NỀN TRỜI & GẠCH (BACKGROUND) */
+.pixel-bg {
+    background-color: #5c94fc; /* Màu bầu trời Mario Classic */
+    background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%);
+    background-size: 100px 100px;
+}
+
+/* 3. KHUNG CARD KIỂU KHỐI GẠCH (BRICK CARD) */
+.pixel-border-outer {
+    border: 4px solid #000;
+    image-rendering: pixelated;
+    box-shadow: 
+        /* Viền ngoài kiểu pixel */
+        4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000,
+        /* Đổ bóng cứng 3D */
+        12px 12px 0 0 rgba(0,0,0,0.2);
+}
+
+/* 4. Ô NHẬP OTP KIỂU KHỐI "?" (QUESTION BLOCK) */
+input.pixel-border-outer {
+    background-color: #fbd000 !important; /* Màu vàng khối ? */
+    border: 4px solid #000 !important;
+    color: #000;
+    box-shadow: inset -4px -4px 0px 0px #eb8b00; /* Bóng trong tạo khối */
+}
+
+input.pixel-border-outer:focus {
+    background-color: #ffffff !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px #000;
+}
+
+/* 5. NÚT "A" (MARIO JUMP BUTTON) */
+.pixel-border-button {
+    background-color: var(--mario-red) !important;
+    border: 4px solid #000 !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 6px 0 0 #800000, /* Bóng dưới nút */
+        4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000;
+}
+
+.pixel-border-button:active {
+    transform: translateY(6px);
+    box-shadow: 4px 0 #000, -4px 0 #000, 0 0px #000, 0 -4px #000;
+}
+
+/* Biểu tượng chữ A tròn */
+.pixel-border-button span.text-3xl {
+    background: #fff;
+    color: var(--mario-red);
+    border: 3px solid #000;
+    border-radius: 999px; /* Trình duyệt hiện đại xử lý tốt, hoặc dùng 0 nếu muốn pixel */
+}
+
+/* 6. HILLS - BIẾN THÀNH CÁC NGỌN ĐỒI XANH MẮT TRÒN */
+.pixel-hills div {
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border: 4px solid #000;
+}
+
+/* 7. ANIMATION NHẢY NHẢY CỦA KHỐI "?" */
+@keyframes mario-bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+.animate-bounce {
+    animation: mario-bounce 0.6s infinite alternate cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.warp-pipe {
+    background: linear-gradient(90deg, #2ecc71 0%, #a2f3a2 50%, #27ae60 100%);
+    border-top: 6px solid #000;
+    border-bottom: 6px solid #000;
+    position: relative;
+}
+.warp-pipe::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 10%; right: 10%; bottom: 0;
+    border-left: 4px solid rgba(0,0,0,0.1);
+    border-right: 4px solid rgba(0,0,0,0.1);
+}
