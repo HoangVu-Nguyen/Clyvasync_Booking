@@ -33,13 +33,6 @@ export class CallbackComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Không làm gì cả! 
-    // Mọi logic xác thực hãy để App Component xử lý.
-    // Nếu sau 5 giây mà App Component chưa đá đi đâu thì mới cứu nét (fail-safe)
-    setTimeout(() => {
-      if (!this.oauthService.hasValidAccessToken()) {
-         this.router.navigate(['/login']);
-      }
-    }, 5000);
+    
   }
 }

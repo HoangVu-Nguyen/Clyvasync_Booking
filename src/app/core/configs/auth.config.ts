@@ -2,11 +2,12 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 
 export const authCodeFlowConfig: AuthConfig = {
   issuer: 'https://localhost:8443',
-  clientId: 'my-client-frontend',
+  clientId: 'clyvasync-client',
   responseType: 'code',
   
   // offline_access giúp Backend trả về Refresh Token
   scope: 'openid profile email offline_access',
+  dummyClientSecret: 'secret-khong-ma-hoa',
 
   redirectUri: (typeof window !== 'undefined') 
                 ? window.location.origin + '/callback' 

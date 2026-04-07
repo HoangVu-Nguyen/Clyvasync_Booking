@@ -71,11 +71,11 @@ export class App implements OnInit {
               .catch(err => {
                 console.warn('Refresh Token trong Cookie hết hạn hoặc bị lỗi:', err);
                 // Chỉ khi không đổi được token mới bắt đăng nhập lại
-                this.oauthService.initCodeFlow();
+              //  this.oauthService.initCodeFlow();
               });
           } else {
             // Nếu chưa từng login thì mới đá sang trang login
-            this.oauthService.initCodeFlow();
+            //this.oauthService.initCodeFlow();
           }
         }
 
