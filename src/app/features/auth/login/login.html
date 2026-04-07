@@ -1,76 +1,134 @@
 <div class="bg-surface font-body text-on-surface min-h-screen flex flex-col w-full overflow-x-hidden">
-    <app-header></app-header>
-    
+
     <main class="flex-grow relative flex items-center justify-center p-4 md:p-8">
         <!-- Trang trí nền (Ẩn trên mobile để đỡ rối) -->
         <div class="absolute inset-0 z-0 pointer-events-none opacity-40 overflow-hidden">
             <div class="absolute bottom-0 w-full h-32 bg-outline opacity-20"></div>
-            <div class="absolute bottom-32 left-10 w-64 h-64 bg-surface-variant rounded-full translate-y-32 hidden md:block"></div>
-            <div class="absolute bottom-32 right-20 w-80 h-80 bg-outline-variant rounded-full translate-y-40 hidden md:block"></div>
+            <div
+                class="absolute bottom-32 left-10 w-64 h-64 bg-surface-variant rounded-full translate-y-32 hidden md:block">
+            </div>
+            <div
+                class="absolute bottom-32 right-20 w-80 h-80 bg-outline-variant rounded-full translate-y-40 hidden md:block">
+            </div>
         </div>
 
         <!-- Container chính: Thay đổi từ 1 cột (mobile) sang 2 cột (desktop) -->
-        <div class="relative z-10 w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-center">
-            
+        <div
+            class="relative z-10 w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-center">
+
             <!-- CỘT TRÁI: SELECT PLAYER -->
             <div class="space-y-6 md:space-y-8 order-2 lg:order-1">
                 <div class="space-y-2 text-center lg:text-left">
-                    <h2 class="font-headline text-2xl md:text-4xl text-primary font-bold tracking-tighter uppercase">Select Player</h2>
-                    <p class="text-on-surface-variant font-bold text-xs md:text-sm tracking-widest uppercase">Pick your save file to continue</p>
+                    <h2 class="font-headline text-2xl md:text-4xl text-primary font-bold tracking-tighter uppercase">
+                        Select Player</h2>
+                    <p class="text-on-surface-variant font-bold text-xs md:text-sm tracking-widest uppercase">Pick your
+                        save file to continue</p>
                 </div>
 
                 <div class="grid grid-cols-1 gap-4">
-                    <!-- Character Card 1 -->
-                    <button class="group flex items-center gap-4 md:gap-6 p-4 md:p-6 bg-surface-container-low pixel-border hover:bg-surface-container-high transition-all text-left w-full">
-                        <div class="w-12 h-12 md:w-16 md:h-16 bg-primary-container pixel-border-primary flex-shrink-0 relative">
-                            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBdaXBP8QtpliwTDAqs-4_-pKy7IW9uz0s953NSqM1or-yNXwq6WiBJ4yGMzheT2IYkR0WaaS9_9-6nkxpFsLvZy66tTZ11hlUdR17GDJX7Ds0cBHO7sENmwYgeijGww2JIYB4aWyuG-YERwDmZMIj-beCgXTc7whqRJnXOJal_miKwClVYZKE7hSqEdZtR8q03Gr6Q1AKCMklQdwQmQzOz2QZK1E77ZmmZH7LQJPS64AUO_M6CLc4j9wwn6oX2YlVGTZ6hy499ClI" />
-                        </div>
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-center">
-                                <span class="font-headline text-sm md:text-xl font-bold uppercase">Mario Vane</span>
-                                <span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 text-[8px] md:text-[10px] font-bold uppercase">LVL 99</span>
+                    <!-- World Activity Card -->
+                    <div
+                        class="p-4 md:p-6 bg-surface-container-low pixel-border opacity-90 relative overflow-hidden group">
+                        <div class="flex items-center gap-4">
+                            <!-- Icon Question Block nhấp nháy -->
+                            <div
+                                class="w-12 h-12 bg-[#fbd000] border-4 border-black flex items-center justify-center shadow-[inset_-4px_-4px_0_0_#eb8b00] animate-bounce">
+                                <span class="font-headline text-2xl text-black">?</span>
                             </div>
-                            <p class="text-[10px] md:text-xs text-on-surface-variant uppercase font-bold">World 1-4</p>
-                        </div>
-                    </button>
 
-                    <!-- New Player -->
-                    <button routerLink="/register" class="flex items-center justify-center gap-4 p-4 md:p-6 border-4 border-dashed border-outline-variant hover:bg-surface-container-low transition-all w-full group">
-                        <span class="material-symbols-outlined text-outline">add_box</span>
-                        <span class="font-headline text-sm md:text-lg font-bold uppercase text-on-surface-variant">New Adventure</span>
-                    </button>
+                            <div class="flex-grow">
+                                <h3 class="font-headline text-[10px] md:text-sm text-primary mb-1">LATEST NEWS</h3>
+                                <!-- Hiệu ứng text chạy hoặc tin nhắn mới nhất -->
+                                <p class="text-[9px] md:text-[11px] font-bold text-on-surface uppercase leading-tight">
+                                    <span class="text-secondary">@Luigi_Dev</span> just shared a new <span
+                                        class="text-red-500">Power-Up</span> in the <span
+                                        class="text-green-600">Dev-Channel</span>!
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Thanh tiến trình cộng đồng (Community Goal) -->
+                        <div class="mt-4 space-y-1">
+                            <div class="flex justify-between text-[8px] font-black uppercase">
+                                <span>Global Coins Collected</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full h-3 bg-black border-2 border-black p-0.5">
+                                <div class="h-full bg-yellow-400" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Server Status & Trends -->
+                    <div
+                        class="p-4 md:p-6 border-4 border-dashed border-outline-variant bg-surface-container-lowest/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1 border-r-2 border-outline-variant border-dotted">
+                                <p class="text-[8px] font-black text-on-surface-variant uppercase">Current World</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-green-600">public</span>
+                                    <span class="font-headline text-[10px] text-primary uppercase">Mushroom-1</span>
+                                </div>
+                            </div>
+                            <div class="space-y-1 pl-2">
+                                <p class="text-[8px] font-black text-on-surface-variant uppercase">Trending Tag</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-red-500">local_fire_department</span>
+                                    <span class="font-headline text-[10px] text-on-surface uppercase">#WarpPipe</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tip/Notice -->
+                    <p
+                        class="text-[9px] text-center font-bold text-on-surface-variant uppercase tracking-[0.2em] mt-2 italic">
+                        "It's dangerous to go alone! Take a friend request."
+                    </p>
                 </div>
             </div>
 
             <!-- CỘT PHẢI: LOGIN PORTAL -->
             <div class="relative order-1 lg:order-2 mt-8 lg:mt-0">
                 <!-- Warp Pipe Top (Chỉ hiện trên desktop) -->
-                <div class="hidden lg:block absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-12 warp-pipe-gradient border-4 border-on-surface z-20 shadow-[0_8px_0_0_#003708]"></div>
-                
-                <div class="bg-surface-container-lowest p-6 md:p-12 pixel-border relative z-10 flex flex-col items-center justify-center min-h-[350px] md:min-h-[400px]">
+                <div
+                    class="hidden lg:block absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-12 warp-pipe-gradient border-4 border-on-surface z-20 shadow-[0_8px_0_0_#003708]">
+                </div>
+
+                <div
+                    class="bg-surface-container-lowest p-6 md:p-12 pixel-border relative z-10 flex flex-col items-center justify-center min-h-[350px] md:min-h-[400px]">
                     <div class="mb-4 md:mb-6 animate-pulse">
-                        <span class="material-symbols-outlined text-5xl md:text-6xl text-primary drop-shadow-[4px_4px_0_#fcd102]">videogame_asset</span>
+                        <span
+                            class="material-symbols-outlined text-5xl md:text-6xl text-primary drop-shadow-[4px_4px_0_#fcd102]">videogame_asset</span>
                     </div>
 
                     <div class="text-center mb-6 md:mb-10">
-                        <h1 class="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tighter mb-2 drop-shadow-[4px_4px_0px_#fcd102]">LOGIN</h1>
-                        <p class="font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] text-on-surface-variant">Secure Server Connection</p>
+                        <h1
+                            class="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tighter mb-2 drop-shadow-[4px_4px_0px_#fcd102]">
+                            LOGIN</h1>
+                        <p class="font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] text-on-surface-variant">
+                            Secure Server Connection</p>
                     </div>
 
-                    <p class="text-xs md:text-sm text-center font-bold text-on-surface-variant mb-6 md:mb-8 uppercase tracking-widest px-2 leading-relaxed">
+                    <p
+                        class="text-xs md:text-sm text-center font-bold text-on-surface-variant mb-6 md:mb-8 uppercase tracking-widest px-2 leading-relaxed">
                         Ready to enter the Warp Zone?<br class="hidden md:block">Connect via secure server to continue.
                     </p>
 
-                    <button (click)="login()" 
-                            class="w-full flex items-center justify-between px-4 md:px-6 py-4 md:py-5 bg-[#ff0000] border-4 border-black cursor-pointer shadow-[0_6px_0_0_#a40009] active:translate-y-1 active:shadow-none transition-all group">
-                        <span class="font-black font-headline text-lg md:text-2xl tracking-tighter uppercase text-white drop-shadow-[2px_2px_0_#000]">CONNECT</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white border-4 border-black rounded-full flex items-center justify-center text-[#ff0000] font-black text-xl md:text-2xl shadow-inner">A</div>
+                    <button (click)="login()"
+                        class="w-full flex items-center justify-between px-4 md:px-6 py-4 md:py-5 bg-[#ff0000] border-4 border-black cursor-pointer shadow-[0_6px_0_0_#a40009] active:translate-y-1 active:shadow-none transition-all group">
+                        <span
+                            class="font-black font-headline text-lg md:text-2xl tracking-tighter uppercase text-white drop-shadow-[2px_2px_0_#000]">CONNECT</span>
+                        <div
+                            class="w-10 h-10 md:w-12 md:h-12 bg-white border-4 border-black rounded-full flex items-center justify-center text-[#ff0000] font-black text-xl md:text-2xl shadow-inner">
+                            A</div>
                     </button>
 
                     <!-- Icons đáy -->
                     <div class="mt-8 md:mt-12 flex justify-center gap-6 md:gap-8 opacity-70">
                         <div class="flex flex-col items-center gap-1">
-                            <span class="material-symbols-outlined text-2xl md:text-3xl text-tertiary-container">security</span>
+                            <span
+                                class="material-symbols-outlined text-2xl md:text-3xl text-tertiary-container">security</span>
                             <span class="text-[7px] md:text-[8px] font-bold uppercase">Safe</span>
                         </div>
                         <div class="flex flex-col items-center gap-1">
@@ -79,12 +137,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Warp Pipe Base (Chỉ hiện trên desktop) -->
-                <div class="hidden lg:block absolute -bottom-8 left-1/2 -translate-x-1/2 w-64 h-16 warp-pipe-gradient border-4 border-on-surface z-0"></div>
+                <div
+                    class="hidden lg:block absolute -bottom-8 left-1/2 -translate-x-1/2 w-64 h-16 warp-pipe-gradient border-4 border-on-surface z-0">
+                </div>
             </div>
         </div>
     </main>
-    
+
     <app-footer></app-footer>
 </div>

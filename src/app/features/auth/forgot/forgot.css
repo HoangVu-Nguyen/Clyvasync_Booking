@@ -1,0 +1,18 @@
+ .pixel-border {
+            box-shadow: 
+                0 -4px 0 0 #003708,
+                0 4px 0 0 #003708,
+                -4px 0 0 0 #003708,
+                4px 0 0 0 #003708;
+        }
+        .step-animation:active {
+            transform: translateY(4px);
+        }
+        .retro-grid {
+            background-image: linear-gradient(to right, rgba(16, 138, 37, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(16, 138, 37, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .hills-bg {
+            background: linear-gradient(180deg, #e1ffd8 0%, #c9ffbf 100%);
+        }
