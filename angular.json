@@ -20,11 +20,20 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/favicon.ico",
               {
                 "glob": "**/*",
-                "input": "public"
-              }
+                "input": "public",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              "src/assets/silent-refresh.html"
             ],
+            
             "styles": [
               "src/styles.css"
             ],

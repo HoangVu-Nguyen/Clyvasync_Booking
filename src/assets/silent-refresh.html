@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Silent Refresh</title>
+</head>
+<body>
+    <script>
+        // Lấy query string (ví dụ: ?code=abc&state=xyz) hoặc hash
+        var msg = location.search || location.hash;
+        // Gửi nó về trang App chính đang đợi
+        window.parent.postMessage(msg, location.origin);
+    </script>
+</body>
+</html>

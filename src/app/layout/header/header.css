@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  .font-headline { font-family: 'Press Start 2P', cursive; } .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pixel-grid {
+            background-image: radial-gradient(circle, #108a25 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.05;
+        }
+        .crt-scanline {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        /* Nhúng Font chữ Pixel */
+/* Định nghĩa lại font chữ game nếu Tailwind chưa config */
+  .font-headline { font-family: 'Press Start 2P', cursive; }
+  
+  /* Tạo hiệu ứng lưới pixel ẩn cho background */
+  .pixel-grid {
+    background-image: linear-gradient(#42a5f5 1px, transparent 1px), linear-gradient(90deg, #42a5f5 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.05;
+  }
+  .dark .pixel-grid {
+    background-image: linear-gradient(#64b5f6 1px, transparent 1px), linear-gradient(90deg, #64b5f6 1px, transparent 1px);
+    opacity: 0.05;
+  }

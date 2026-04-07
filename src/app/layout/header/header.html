@@ -1,39 +1,90 @@
-<header
-  class="bg-[#e1ffd8] dark:bg-emerald-950 flex justify-between items-center w-full px-1 py-4 max-w-none border-b-4 border-emerald-800/10 shadow-[0_20px_40px_-15px_rgba(0,55,8,0.06)] relative z-50">
-  <!-- LOGO: Quay về trang chủ -->
-  <a href="/"
-    class="text-2xl font-bold tracking-tighter text-[#bb000c] uppercase font-headline hover:scale-105 transition-transform active:translate-y-0.5">
-    Clyvasync
-  </a>
+<header class="fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-6 h-16 bg-[#e1ffd8] dark:bg-[#003708] shadow-[0_40px_50px_-15px_rgba(0,55,8,0.06)]">
+  <div class="absolute inset-0 pixel-grid"></div>
 
-  <div class="flex gap-4 md:gap-8 items-center">
-    <!-- LINK PHỤ: Ẩn bớt trên mobile để tránh rối -->
-    <nav class="hidden sm:flex gap-6 items-center border-r-2 border-emerald-800/10 pr-6">
-      <a class="text-emerald-900 dark:text-emerald-100 opacity-60 font-['Inter'] text-xs font-bold uppercase tracking-wider hover:opacity-100 hover:text-[#108a25] transition-all"
-        href="#">Support</a>
-      <a class="text-emerald-900 dark:text-emerald-100 opacity-60 font-['Inter'] text-xs font-bold uppercase tracking-wider hover:opacity-100 hover:text-[#108a25] transition-all"
-        href="#">FAQ</a>
-    </nav>
+  <!-- ================= LEFT: Logo and Search ================= -->
+  <div class="relative flex items-center gap-4 lg:gap-8 w-1/4">
+    <!-- Hover Logo nảy nhẹ -->
+    <h1
+      class="text-2xl font-bold text-[#bb000c] dark:text-[#ffefed] font-headline tracking-tighter uppercase cursor-pointer hover:scale-105 hover:drop-shadow-md transition-all duration-300">
+      MARIO_NET</h1>
 
-    <!-- HÀNH ĐỘNG CHÍNH: Thay đổi tùy theo trang -->
-    <div class="flex items-center gap-3">
-      <span class="hidden md:block text-[10px] font-bold uppercase text-emerald-900/40 tracking-tighter">
-        New Player?
-      </span>
+    <!-- Hover/Focus ô Search viền sáng lên -->
+    <app-search-bar></app-search-bar>
+  </div>
 
-      <!-- Nút Register (Dùng cho trang Login) -->
-      <button routerLink="/register"
-        class="bg-[#bb000c] text-[#ffefed] px-5 py-2 font-headline font-bold uppercase text-sm pixel-border-primary hover:bg-[#ff5b4c] transition-colors active:translate-y-1 step-animation flex items-center gap-2">
-        <span class="material-symbols-outlined text-sm">person_add</span>
-        Join Now
-      </button>
+  <!-- ================= CENTER: Facebook-style Tabs (SMOOTH HOVER) ================= -->
+  <nav class="relative hidden lg:flex items-center justify-center gap-2 h-full flex-1">
 
-      <!-- Nút Login (Dùng cho trang Register/Forgot) - Có thể ẩn/hiện bằng logic Angular -->
-      <!-- 
-      <button class="text-emerald-900 dark:text-emerald-100 font-headline font-bold uppercase text-sm hover:underline decoration-2 underline-offset-4 active:translate-y-0.5">
-        Login
-      </button> 
-      -->
-    </div>
+    <!-- Home (Active) -->
+    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
+      <!-- Hộp sáng bo tròn mượt bên trong -->
+      <div
+        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
+        <span
+          class="material-symbols-outlined text-3xl text-[#bb000c] transition-transform duration-300 group-hover:scale-110 group-active:scale-95"
+          style="font-variation-settings: 'FILL' 1;">home</span>
+      </div>
+      <!-- Dòng kẻ Active -->
+      <div class="absolute bottom-0 w-full h-1 bg-[#bb000c] rounded-t-full"></div>
+    </a>
+
+    <!-- Friends -->
+    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
+      <div
+        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
+        <span
+          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">group</span>
+      </div>
+    </a>
+
+    <!-- Video / Reels -->
+    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
+      <div
+        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
+        <span
+          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">ondemand_video</span>
+      </div>
+    </a>
+
+    <!-- Marketplace -->
+    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
+      <div
+        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
+        <span
+          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">storefront</span>
+      </div>
+    </a>
+
+    <!-- Groups -->
+    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
+      <div
+        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50 relative">
+        <span
+          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">groups</span>
+        <!-- Chấm đỏ thông báo nhỏ bám theo Icon -->
+        <span
+          class="absolute top-2 right-4 w-2.5 h-2.5 bg-[#bb000c] rounded-full border-2 border-[#e1ffd8] dark:border-[#003708] group-hover:border-transparent transition-all duration-300"></span>
+      </div>
+    </a>
+
+  </nav>
+
+  <!-- ================= RIGHT: Facebook-style Actions (JUICY HOVER) ================= -->
+  <div class="relative flex items-center justify-end gap-3 w-1/4">
+
+    <!-- Menu -->
+    <app-menu-widget></app-menu-widget>
+
+    <!-- Messenger -->
+    <app-messenger-widget></app-messenger-widget>
+
+    <!-- Notifications -->
+    <app-notification-widget></app-notification-widget>
+
+    <div class="h-8 w-[2px] bg-black/10 dark:bg-white/10 mx-1"></div>
+
+    <!-- Profile -->
+    <app-user-menu></app-user-menu>
+
   </div>
 </header>

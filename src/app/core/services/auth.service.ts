@@ -21,4 +21,12 @@ export class AuthService {
   verifyOTP(email: string, code: string): Observable<any> {
     return this.http.post(`${this.API_URL}/verify-account`, { email, code });
   }
+  refreshAccessToken() {
+    return this.http.post<any>(
+      `${this.API_URL}/refresh`,
+      {},
+      { withCredentials: true }
+    );
+  }
+  
 }

@@ -1,0 +1,20 @@
+<!-- Wrapper bao phủ toàn màn hình, dùng flexbox dọc -->
+<div class="min-h-screen flex flex-col bg-surface font-body text-on-surface">
+  
+  <!-- 1. HEADER CỐ ĐỊNH Ở TRÊN -->
+  <!-- Thêm sticky top-0 z-50 nếu bạn muốn header luôn bám dính khi cuộn -->
+  <header class="sticky top-0 z-50">
+    <app-header></app-header>
+  </header>
+
+  <!-- 2. NỘI DUNG CHÍNH (THAY ĐỔI THEO ROUTE) -->
+  <!-- flex-grow giúp phần này tự động giãn ra, đẩy footer xuống dưới đáy -->
+  <main class="flex-grow">
+    <!-- Nơi các trang như Home, Profile sẽ được Render (xuất hiện) -->
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- 3. FOOTER Ở DƯỚI CÙNG -->
+  <app-footer></app-footer>
+
+</div>
