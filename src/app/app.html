@@ -7,4 +7,16 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
+<!-- 
+      Chỉ khi isInitialized() là true thì router-outlet mới xuất hiện.
+      Điều này đảm bảo các Component con (Home, UserMenu) không được khởi tạo
+      cho đến khi Access Token đã nằm sẵn trong RAM.
+    -->
+    @if (isInitialized()) {
+      <router-outlet></router-outlet>
+    } @else {
+      <!-- Màn hình chờ trong lúc hồi sinh token -->
+      <div class="loading-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <p>Đang tải ứng dụng...</p>
+      </div>
+    }
