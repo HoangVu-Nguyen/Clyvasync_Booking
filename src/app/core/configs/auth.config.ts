@@ -4,27 +4,24 @@ export const authCodeFlowConfig: AuthConfig = {
   issuer: 'https://localhost:8443',
   clientId: 'clyvasync-client',
   responseType: 'code',
-  
-  // offline_access giúp Backend trả về Refresh Token
+
   scope: 'openid profile email offline_access',
   dummyClientSecret: 'secret-khong-ma-hoa',
 
   redirectUri: (typeof window !== 'undefined') 
                 ? window.location.origin + '/callback' 
                 : 'https://localhost:4200/callback',
-  
 
+  postLogoutRedirectUri: 'https://localhost:4200',
+
+  logoutUrl: 'https://localhost:8443/oauth2/logout', // 👈 FIX Ở ĐÂY
 
   disablePKCE: false,
-  requireHttps: false, 
+  requireHttps: false,
 
-  // --- THAY ĐỔI CHIẾN THUẬT TẠI ĐÂY ---
-  useSilentRefresh: false,        // Tắt Iframe để bỏ qua việc load file .html (giảm 1-2s delay)
+  useSilentRefresh: false,
   skipIssuerCheck: false,
   strictDiscoveryDocumentValidation: false,
-  
-  // Tự động làm mới token ngầm khi đang mở tab (không cần F5)
-  timeoutFactor: 0.75, 
+  timeoutFactor: 0.75,
   sessionChecksEnabled: false,
-  
 };

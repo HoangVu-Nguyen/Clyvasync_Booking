@@ -7,7 +7,7 @@
     [class.shadow-[4px_4px_0_0_rgba(0,0,0,1)]]="!isOpen"
     [class.translate-y-1]="isOpen"
     [class.shadow-none]="isOpen">
-    <img alt="User avatar" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" src="https://img.dtcn.com/image/digitaltrends/mario-art-pics-13-1024x1024.png"/>
+    <img alt="User avatar" class="w-full h-full object-cover  hover:grayscale-0 transition-all" [src]=userHeaderResponse.photoUrl/>
   </div>
 
   <!-- MENU DROPDOWN RETRO 8-BIT STYLE -->
@@ -23,10 +23,10 @@
     <!-- Header Thông tin User (Hồ sơ người chơi) -->
     <div class="flex items-center gap-3 p-3 mb-2 border-2 border-transparent hover:border-black hover:bg-[#ffeb3b] dark:hover:bg-[#404040] cursor-pointer transition-none group">
       <div class="w-12 h-12 border-2 border-black overflow-hidden bg-white">
-         <img alt="User avatar" class="w-full h-full object-cover" src="https://img.dtcn.com/image/digitaltrends/mario-art-pics-13-1024x1024.png"/>
+         <img alt="User avatar" class="w-full h-full object-cover" [src]=userHeaderResponse.photoUrl/>
       </div>
       <div>
-        <h2 class="font-headline text-[12px] font-bold uppercase text-[#e52521] dark:text-[#ff6b6b] mb-1">Level 99 Hero</h2>
+        <h2 class="font-headline text-[12px] font-bold uppercase text-[#e52521] dark:text-[#ff6b6b] mb-1">{{userHeaderResponse.username}}</h2>
         <p class="font-body text-[10px] uppercase font-bold text-gray-600 dark:text-gray-300 group-hover:text-black">> VIEW PLAYER STATS</p>
       </div>
     </div>
@@ -77,13 +77,13 @@
       </li>
 
       <!-- Đăng xuất (Khối Đỏ) -->
-      <li class="mt-2">
-        <a href="#" class="flex items-center gap-3 p-2 bg-white dark:bg-[#303030] border-2 border-black hover:bg-[#e52521] hover:text-white text-black dark:text-white transition-none group shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:shadow-none active:translate-y-1 mx-1 mb-1">
+      <li class="mt-2" (click)="logout()">
+        <div  class="flex items-center gap-3 p-2 bg-white dark:bg-[#303030] border-2 border-black hover:bg-[#e52521] hover:text-white text-black dark:text-white transition-none group shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:shadow-none active:translate-y-1 mx-1 mb-1">
           <div class="w-8 h-8 flex items-center justify-center">
             <span class="material-symbols-outlined text-xl">logout</span>
           </div>
           <span class="font-headline text-[10px] uppercase mt-1">Đăng xuất</span>
-        </a>
+        </div>
       </li>
 
     </ul>

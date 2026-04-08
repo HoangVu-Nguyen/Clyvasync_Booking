@@ -11,11 +11,11 @@ import { AuthService } from './core/services/auth.service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `<router-outlet></router-outlet>`
+  templateUrl: './app.html'
 })
 export class App implements OnInit {
   protected readonly title = signal('Clyvasync_Network');
-protected isInitialized = signal(false);
+  protected isInitialized = signal(false);
   constructor(
     private oauthService: OAuthService,
     private router: Router,
@@ -26,8 +26,6 @@ protected isInitialized = signal(false);
 
   async ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      
-      // 1. Cấu hình Storage & OAuth
       this.oauthService.setStorage(new HybridStorage());
       const baseUrl = window.location.origin;
       this.oauthService.configure({
@@ -38,36 +36,44 @@ protected isInitialized = signal(false);
       this.oauthService.setupAutomaticSilentRefresh();
 
       try {
-        // 2. Load Discovery Document
         await this.oauthService.loadDiscoveryDocument();
 
-        // LUỒNG A: Xử lý Login Redirect (vừa đăng nhập xong)
+        // LUỒNG A: Xử lý Login Redirect
         if (window.location.search.includes('code=')) {
           await this.oauthService.tryLogin();
           if (this.oauthService.hasValidAccessToken()) {
+            console
             this.tokenService.setAccessToken(this.oauthService.getAccessToken());
-            // Clear URL để mất cái ?code=...
-            await this.router.navigate([], { queryParams: { code: null, state: null, session_state: null }, queryParamsHandling: 'merge' });
+            console.log(this.tokenService.getAccessToken())
+            // 🔥 QUAN TRỌNG: Set initialized trước khi navigate
+            this.isInitialized.set(true);
+
+            // Sau đó mới xóa params trên URL và về trang chủ
+            await this.router.navigate(['/'], { replaceUrl: true });
+            return; // Thoát hàm luôn vì đã xong
           }
-        } 
-        // LUỒNG B: Hồi sinh Token sau khi F5
+        }
+
+        // LUỒNG B: F5 hồi sinh token
         else if (!this.oauthService.hasValidAccessToken() && this.oauthService.getRefreshToken()) {
-          console.log('F5 detected → Đang hồi sinh Access Token từ Cookie...');
           try {
             await this.oauthService.refreshToken();
             this.tokenService.setAccessToken(this.oauthService.getAccessToken());
-            console.log('Hồi sinh thành công!');
+            console.log(this.tokenService.getAccessToken())
+            this.isInitialized.set(true);
+
           } catch (err) {
-            console.warn('Refresh Token đã hết hạn hoặc không hợp lệ.');
-            // Nếu refresh lỗi, bạn có thể xóa dấu hiệu cookie để lần sau không thử lại
+            console.warn('Refresh Token hỏng:', err);
             localStorage.removeItem('has_cookie_token');
           }
         }
       } catch (error) {
-        console.error('Lỗi trong quá trình khởi tạo OAuth:', error);
+        console.error('OAuth Error:', error);
       } finally {
-        // LUÔN LUÔN set true ở cuối cùng để app hiển thị giao diện
-        this.isInitialized.set(true);
+        // Chỉ set true nếu luồng A không thực hiện navigate ở trên
+        if (!this.isInitialized()) {
+          this.isInitialized.set(true);
+        }
       }
     }
   }

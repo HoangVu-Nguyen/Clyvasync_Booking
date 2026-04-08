@@ -1,7 +1,10 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Cần thiết để dùng ngClass nếu dùng Angular cũ, hoặc dùng thẳng Tailwind
 import { TokenService } from '../../../../core/services/token.service';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { UserPhotoService } from '../../../../core/services/media/user-photo.service';
+import { UserService } from '../../../../core/services/user/user.service';
+import { UserHeaderResponse } from '../../../../core/models/response/user-header.response';
 
 @Component({
   selector: 'app-user-menu',
@@ -11,25 +14,36 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class UserMenu implements OnInit {
   isOpen = false;
+  userHeaderResponse!: UserHeaderResponse;
 
-  constructor(private eRef: ElementRef,private tokenService:TokenService,private oauthService:OAuthService) {}
+  constructor(private eRef: ElementRef, private tokenService: TokenService, private oauthService: OAuthService, private userService: UserService, private cdr: ChangeDetectorRef) { }
   ngOnInit(): void {
 
-    console.log(this.tokenService.getAccessToken())
-    console.log(this.oauthService.getRefreshToken().toString)
-  }
+    console.log(this.oauthService.getAccessToken())
+    console.log(this.oauthService.getRefreshToken())
+    this.userService.getHeaderInfo().subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.userHeaderResponse = res.data;
+          this.cdr.detectChanges();
 
-  // Hàm chuyển đổi trạng thái Mở/Đóng
+        }
+      }
+    }
+
+    )
+
+  }
   toggleMenu() {
     this.isOpen = !this.isOpen;
   }
-
-  // Lắng nghe sự kiện click trên toàn bộ Document
-  // Nếu click xảy ra bên ngoài thẻ <app-user-menu>, thì đóng popup
   @HostListener('document:click', ['$event'])
   clickout(event: Event) {
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.isOpen = false;
     }
+  }
+  logout() {
+    this.oauthService.logOut();
   }
 }
