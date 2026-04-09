@@ -1,10 +1,11 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Cần thiết để dùng ngClass nếu dùng Angular cũ, hoặc dùng thẳng Tailwind
 import { TokenService } from '../../../../core/services/token.service';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { AuthConfig, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
 import { UserPhotoService } from '../../../../core/services/media/user-photo.service';
 import { UserService } from '../../../../core/services/user/user.service';
 import { UserHeaderResponse } from '../../../../core/models/response/user-header.response';
+import { authCodeFlowConfig } from '../../../../core/configs/auth.config';
 
 @Component({
   selector: 'app-user-menu',
@@ -16,23 +17,25 @@ export class UserMenu implements OnInit {
   isOpen = false;
   userHeaderResponse!: UserHeaderResponse;
 
-  constructor(private eRef: ElementRef, private tokenService: TokenService, private oauthService: OAuthService, private userService: UserService, private cdr: ChangeDetectorRef) { }
+  constructor(private eRef: ElementRef, private tokenService: TokenService, private oauthService: OAuthService, private userService: UserService, private cdr: ChangeDetectorRef, private storage: OAuthStorage) { }
   ngOnInit(): void {
 
     console.log(this.oauthService.getAccessToken())
     console.log(this.oauthService.getRefreshToken())
-    this.userService.getHeaderInfo().subscribe({
-      next: (res) => {
-        if (res.success) {
-          this.userHeaderResponse = res.data;
-          this.cdr.detectChanges();
+    if (this.oauthService.hasValidAccessToken()) {
+      this.userService.getHeaderInfo().subscribe({
+        next: (res) => {
+          if (res.success) {
+            this.userHeaderResponse = res.data;
+            this.cdr.detectChanges();
 
+          }
         }
       }
+
+
+      )
     }
-
-    )
-
   }
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -44,6 +47,24 @@ export class UserMenu implements OnInit {
     }
   }
   logout() {
-    this.oauthService.logOut();
+    // 1. Lấy ID Token trực tiếp từ HybridStorage (đang nằm trong RAM)
+    const idToken = this.oauthService.getIdToken();
+
+    if (!idToken) {
+      console.warn("Không tìm thấy ID Token trong RAM, có thể bạn đã F5 hoặc mất session");
+    }
+
+    // 2. Cấu hình các tham số logout
+    const postLogoutUri = authCodeFlowConfig.postLogoutRedirectUri ?? window.location.origin; // default to current origin if undefined
+    const encodedPostLogout = encodeURIComponent(postLogoutUri);
+    const encodedIdToken = encodeURIComponent(idToken ?? '');
+    const logoutUrl = `https://localhost:8443/connect/logout?id_token_hint=${encodedIdToken}&post_logout_redirect_uri=${encodedPostLogout}`;
+
+    // 3. Xóa sạch dấu vết ở Client (Access Token trong RAM, Cookie Flag ở LocalStorage)
+    this.oauthService.logOut(true);
+    localStorage.removeItem('has_cookie_token');
+
+    // 4. Chuyển hướng thủ công sang Server xác thực
+    window.location.href = logoutUrl;
   }
 }
