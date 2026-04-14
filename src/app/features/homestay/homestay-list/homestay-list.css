@@ -1,0 +1,32 @@
+/* Tải Font chữ cao cấp */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:host {
+  display: block;
+}
+
+/* Định nghĩa Font cho Tailwind classes */
+.font-headline {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Fix Icon Google Material */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Chỉnh mượt hiệu ứng zoom */
+img {
+  will-change: transform;
+}
+
+/* Tối ưu hóa cho Mobile: Ép các banner ngang về dạng đứng để xem tốt trên điện thoại */
+@media (max-width: 768px) {
+  .aspect-\[21\/9\], .aspect-\[21\/7\], .aspect-\[16\/10\] {
+    aspect-ratio: 4 / 3 !important;
+  }
+}

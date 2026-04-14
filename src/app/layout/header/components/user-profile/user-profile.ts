@@ -1,23 +1,22 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Cần thiết để dùng ngClass nếu dùng Angular cũ, hoặc dùng thẳng Tailwind
-import { TokenService } from '../../../../core/services/token.service';
-import { AuthConfig, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
-import { UserPhotoService } from '../../../../core/services/media/user-photo.service';
 import { UserService } from '../../../../core/services/user/user.service';
+import { AuthConfig, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
 import { UserHeaderResponse } from '../../../../core/models/response/user-header.response';
 import { authCodeFlowConfig } from '../../../../core/configs/auth.config';
 
 @Component({
-  selector: 'app-user-menu',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './user-menu.html'
+  selector: 'app-user-profile',
+  imports: [],
+  templateUrl: './user-profile.html',
+  styleUrl: './user-profile.css',
 })
-export class UserMenu implements OnInit {
-  isOpen = false;
+export class UserProfile implements OnInit {
   userHeaderResponse!: UserHeaderResponse;
+  isOpen = false;
 
-  constructor(private eRef: ElementRef, private tokenService: TokenService, private oauthService: OAuthService, private userService: UserService, private cdr: ChangeDetectorRef, private storage: OAuthStorage) { }
+  constructor(private eRef: ElementRef,private oauthService: OAuthService, private userService: UserService, private cdr: ChangeDetectorRef, private storage: OAuthStorage) {
+
+  }
   ngOnInit(): void {
 
     console.log(this.oauthService.getAccessToken())
@@ -46,7 +45,7 @@ export class UserMenu implements OnInit {
       this.isOpen = false;
     }
   }
-  logout() {
+    logout() {
     // 1. Lấy ID Token trực tiếp từ HybridStorage (đang nằm trong RAM)
     const idToken = this.oauthService.getIdToken();
 

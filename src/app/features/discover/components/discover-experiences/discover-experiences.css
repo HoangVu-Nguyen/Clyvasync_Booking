@@ -1,0 +1,63 @@
+/* --- Khung chứa ảnh (Aspect Ratio) --- */
+.aspect-\[3\/4\] {
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem; /* rounded-xl */
+  cursor: pointer;
+  background-color: #f0ede8; /* surface-container làm nền khi ảnh chưa tải */
+}
+
+/* --- Hiệu ứng Ảnh --- */
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1); /* Chuyển động mượt hơn linear */
+}
+
+.group:hover img {
+  transform: scale(1.1);
+}
+
+/* --- Lớp phủ Gradient --- */
+/* Đảm bảo chữ trắng luôn đọc được bất kể ảnh sáng hay tối */
+.bg-gradient-to-t {
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.2) 50%, 
+    transparent 100%
+  );
+  opacity: 0.9;
+  transition: opacity 0.4s ease;
+}
+
+.group:hover .bg-gradient-to-t {
+  opacity: 1;
+}
+
+/* --- Nội dung văn bản --- */
+.absolute.bottom-6 {
+  z-index: 10;
+  pointer-events: none; /* Tránh cản trở việc click vào ảnh */
+}
+
+h3.font-headline {
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* --- Hiệu ứng nâng nhẹ Card (Tùy chọn) --- */
+.group {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.group:hover {
+  transform: translateY(-4px);
+}

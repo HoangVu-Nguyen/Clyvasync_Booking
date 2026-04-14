@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessengerWidget } from './messenger-widget';
+import { DiscoverFeatureInfo } from './discover-feature-info';
 
-describe('MessengerWidget', () => {
-  let component: MessengerWidget;
-  let fixture: ComponentFixture<MessengerWidget>;
+describe('DiscoverFeatureInfo', () => {
+  let component: DiscoverFeatureInfo;
+  let fixture: ComponentFixture<DiscoverFeatureInfo>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MessengerWidget],
+      imports: [DiscoverFeatureInfo],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MessengerWidget);
+    fixture = TestBed.createComponent(DiscoverFeatureInfo);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,0 +1,101 @@
+/* --- Khung Hero Tổng thể --- */
+section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* --- Hiệu ứng Ảnh nền mượt mà --- */
+.absolute.inset-0 img {
+  filter: brightness(0.85); /* Làm tối ảnh một chút để nổi bật Text trắng */
+  transition: transform 12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+section:hover .absolute.inset-0 img {
+  transform: scale(1.1); /* Hiệu ứng zoom nhẹ khi người dùng ở trong section này */
+}
+
+/* --- Search Bar Pill (Thanh tìm kiếm) --- */
+.bg-surface-container-lowest\/90 {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hiệu ứng nổi khối khi di chuột vào thanh Search */
+.relative.z-20:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* --- Tinh chỉnh các ô nhập liệu bên trong --- */
+.flex-1 {
+  transition: background-color 0.3s ease;
+  border-radius: 999px;
+}
+
+/* Hiệu ứng highlight vùng đang chọn (hover/focus) */
+.flex-1:hover {
+  background-color: rgba(23, 49, 36, 0.04); /* primary màu nhạt */
+}
+
+/* Label chuẩn Luxury */
+label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.1em;
+  color: #727973; /* outline color */
+}
+
+input {
+  font-size: 15px;
+  color: #173124; /* primary */
+  outline: none;
+}
+
+input::placeholder {
+  color: #a8a29e; /* stone-400 */
+  font-weight: 400;
+}
+
+/* --- Nút Tìm Kiếm --- */
+button {
+  box-shadow: 0 10px 20px -5px rgba(23, 49, 36, 0.3);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 15px 30px -10px rgba(23, 49, 36, 0.5);
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* --- Responsive cho Mobile --- */
+@media (max-width: 768px) {
+  .relative.z-20 {
+    border-radius: 2rem;
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .border-r {
+    border-right: none;
+    border-bottom: 1px solid rgba(114, 121, 115, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 3rem !important;
+    line-height: 1.1;
+  }
+}

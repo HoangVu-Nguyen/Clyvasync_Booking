@@ -29,8 +29,7 @@ constructor(private oauthService: OAuthService, private router: Router) {
     });
   }
 
-  login() {
-    // Bước này sẽ tự tạo PKCE và Redirect sang cổng 8080
+  redirectToOAuth() {
     this.oauthService.initCodeFlow();
   }
 }

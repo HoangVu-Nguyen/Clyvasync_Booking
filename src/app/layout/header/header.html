@@ -1,90 +1,17 @@
-<header class="fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-6 h-16 bg-[#e1ffd8] dark:bg-[#003708] shadow-[0_40px_50px_-15px_rgba(0,55,8,0.06)]">
-  <div class="absolute inset-0 pixel-grid"></div>
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-stone-200/50 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]">
+  <nav class="flex justify-between items-center px-8 lg:px-12 py-4 w-full max-w-[1440px] mx-auto">
+    
+    <div class="flex items-center">
+      <span class="text-2xl font-extrabold tracking-tighter text-[#2D4739] font-headline uppercase">Curator</span>
+    </div>
 
-  <!-- ================= LEFT: Logo and Search ================= -->
-  <div class="relative flex items-center gap-4 lg:gap-8 w-1/4">
-    <!-- Hover Logo nảy nhẹ -->
-    <h1
-      class="text-2xl font-bold text-[#bb000c] dark:text-[#ffefed] font-headline tracking-tighter uppercase cursor-pointer hover:scale-105 hover:drop-shadow-md transition-all duration-300">
-      MARIO_NET</h1>
+    <app-nav-links></app-nav-links>
 
-    <!-- Hover/Focus ô Search viền sáng lên -->
-    <app-search-bar></app-search-bar>
-  </div>
-
-  <!-- ================= CENTER: Facebook-style Tabs (SMOOTH HOVER) ================= -->
-  <nav class="relative hidden lg:flex items-center justify-center gap-2 h-full flex-1">
-
-    <!-- Home (Active) -->
-    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
-      <!-- Hộp sáng bo tròn mượt bên trong -->
-      <div
-        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
-        <span
-          class="material-symbols-outlined text-3xl text-[#bb000c] transition-transform duration-300 group-hover:scale-110 group-active:scale-95"
-          style="font-variation-settings: 'FILL' 1;">home</span>
-      </div>
-      <!-- Dòng kẻ Active -->
-      <div class="absolute bottom-0 w-full h-1 bg-[#bb000c] rounded-t-full"></div>
-    </a>
-
-    <!-- Friends -->
-    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
-      <div
-        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
-        <span
-          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">group</span>
-      </div>
-    </a>
-
-    <!-- Video / Reels -->
-    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
-      <div
-        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
-        <span
-          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">ondemand_video</span>
-      </div>
-    </a>
-
-    <!-- Marketplace -->
-    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
-      <div
-        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50">
-        <span
-          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">storefront</span>
-      </div>
-    </a>
-
-    <!-- Groups -->
-    <a class="w-24 h-full flex items-center justify-center relative group cursor-pointer" href="#">
-      <div
-        class="w-20 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:bg-[#58fb62]/40 dark:group-hover:bg-[#00628a]/50 relative">
-        <span
-          class="material-symbols-outlined text-3xl text-[#108a25] dark:text-[#57c357] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">groups</span>
-        <!-- Chấm đỏ thông báo nhỏ bám theo Icon -->
-        <span
-          class="absolute top-2 right-4 w-2.5 h-2.5 bg-[#bb000c] rounded-full border-2 border-[#e1ffd8] dark:border-[#003708] group-hover:border-transparent transition-all duration-300"></span>
-      </div>
-    </a>
+    <div class="flex items-center space-x-4">
+      <app-search-bar></app-search-bar>
+      
+      <app-user-profile class="flex items-center"></app-user-profile>
+    </div>
 
   </nav>
-
-  <!-- ================= RIGHT: Facebook-style Actions (JUICY HOVER) ================= -->
-  <div class="relative flex items-center justify-end gap-3 w-1/4">
-
-    <!-- Menu -->
-    <app-menu-widget></app-menu-widget>
-
-    <!-- Messenger -->
-    <app-messenger-widget></app-messenger-widget>
-
-    <!-- Notifications -->
-    <app-notification-widget></app-notification-widget>
-
-    <div class="h-8 w-[2px] bg-black/10 dark:bg-white/10 mx-1"></div>
-
-    <!-- Profile -->
-    <app-user-menu></app-user-menu>
-
-  </div>
 </header>

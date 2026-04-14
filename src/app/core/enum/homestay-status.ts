@@ -1,0 +1,6 @@
+export enum HomestayStatus {
+  AVAILABLE = 'AVAILABLE',
+  OCCUPIED = 'OCCUPIED',
+  MAINTENANCE = 'MAINTENANCE'
+}
+

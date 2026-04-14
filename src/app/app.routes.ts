@@ -6,6 +6,8 @@ import { Forgot } from './features/auth/forgot/forgot';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { Dashboard } from './features/dashboard/dashboard';
 import { CallbackComponent } from './features/auth/callback/callback.component';
+import { HomestayList } from './features/homestay/homestay-list/homestay-list';
+import { Discover } from './features/discover/discover';
 
 export const routes: Routes = [
   // 1. NHÓM KHÔNG CÓ LAYOUT (Auth)
@@ -21,8 +23,9 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       // Vào thẳng localhost:4200 -> đá sang localhost:4200/home
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: Dashboard, title: 'World Feed - Clyvasync' }
+      { path: '', redirectTo: 'discover', pathMatch: 'full' },
+      { path: 'homestays', component: HomestayList, title: 'World Feed - Clyvasync' },
+      { path: 'discover', component: Discover, title: 'World Feed - Clyvasync' }
     ]
   },
 

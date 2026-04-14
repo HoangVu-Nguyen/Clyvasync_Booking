@@ -1,159 +1,116 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
 
-/* stylelint-enable at-rule-no-unknown */
-/* custom css từ file bạn */
-
-/* 1. KHAI BÁO BẢNG MÀU HỆ THỐNG */
+/* 1. KHAI BÁO BẢNG MÀU HỆ THỐNG (THE CURATOR EDITION) */
 :root {
-  --primary: #bb000c;
-  --on-primary: #ffefed;
-  --primary-fixed: #ff7668;
-  --surface: #e1ffd8;
-  --on-surface: #003708;
-  --on-surface-variant: #006b18;
-  --surface-variant: #58fb62;
-  --outline: #108a25;
-  --outline-variant: #57c357;
-  --surface-container-low: #c9ffbf;
-  --surface-container-high: #9cff94;
+  /* Màu chủ đạo: Xanh rừng sâu & Trắng ngà */
+  --primary: #173124;
+  --primary-container: #2d4739;
+  --on-primary: #ffffff;
+  
+  --secondary: #974728; /* Màu cam đất làm điểm nhấn */
+  --secondary-container: #ff9973;
+
+  --background: #fcf9f4;
+  --surface: #fcf9f4;
+  --on-surface: #1c1c19;
+  --on-surface-variant: #424844;
+  
   --surface-container-lowest: #ffffff;
-  --tertiary-container: #fcd102;
-  --secondary-container: #a0d8ff;
-  --error: #b41340;
+  --surface-container-low: #f6f3ee;
+  --surface-container-high: #ebe8e3;
+  --surface-container-highest: #e5e2dd;
+
+  --outline-variant: #c2c8c2;
+  --error: #ba1a1a;
 }
 
-/* 2. CẤU HÌNH FULL MÀN HÌNH */
+/* 2. CẤU HÌNH CƠ BẢN */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--surface);
-  image-rendering: pixelated; /* Giúp các icon/pixel trông sắc nét hơn */
+  background-color: var(--background);
+  color: var(--on-surface);
+  /* Loại bỏ image-rendering pixelated để chữ và ảnh mượt mà hơn */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 3. CÁC CLASS TIỆN ÍCH PIXEL (GIỮ NGUYÊN TÊN CLASS CỦA BẠN) */
-.pixel-border {
-  box-shadow: 
-    0 -4px 0 0 var(--on-surface),
-    0 4px 0 0 var(--on-surface),
-    -4px 0 0 0 var(--on-surface),
-    4px 0 0 0 var(--on-surface);
+/* 3. HIỆU ỨNG KÍNH MỜ (GLASSMORPHISM) */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-.pixel-border-primary {
-  box-shadow: 
-    0 -4px 0 0 var(--primary),
-    0 4px 0 0 var(--primary),
-    -4px 0 0 0 var(--primary),
-    4px 0 0 0 var(--primary);
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.warp-pipe-gradient {
-  background: linear-gradient(90deg, #108a25 0%, #58fb62 50%, #108a25 100%);
+/* 4. TYPOGRAPHY & LAYOUT */
+.text-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.brick-pattern {
-  background-color: var(--primary);
-  background-image: 
-    linear-gradient(335deg, #a40009 23px, transparent 23px),
-    linear-gradient(155deg, #a40009 23px, transparent 23px),
-    linear-gradient(335deg, #a40009 23px, transparent 23px),
-    linear-gradient(155deg, #a40009 23px, transparent 23px);
-  background-size: 58px 58px;
-  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
 }
 
-.step-animation {
-  transition: transform 0.1s;
+/* 5. CẢI TIẾN INPUT (THAY CHO MARIO-INPUT) */
+/* Ô nhập liệu bo tròn, sang trọng */
+.curator-input {
+  background-color: var(--surface-container-high);
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  color: var(--on-surface);
 }
 
-.step-animation:active {
-  transform: translateY(4px);
-}
-
-/* 4. ĐỊNH NGHĨA LẠI CÁC CLASS MÀU ĐỂ TAILWIND NHẬN DIỆN */
-.bg-surface { background-color: var(--surface); }
-.bg-surface-container-low { background-color: var(--surface-container-low); }
-.bg-surface-container-high { background-color: var(--surface-container-high); }
-.bg-surface-container-lowest { background-color: var(--surface-container-lowest); }
-.bg-primary { background-color: var(--primary); }
-.bg-primary-container { background-color: var(--primary-container); }
-.bg-secondary-container { background-color: var(--secondary-container); }
-.bg-tertiary-container { background-color: var(--tertiary-container); }
-.bg-outline { background-color: var(--outline); }
-.bg-surface-variant { background-color: var(--surface-variant); }
-.bg-outline-variant { background-color: var(--outline-variant); }
-
-.text-primary { color: var(--primary); }
-.text-on-primary { color: var(--on-primary); }
-.text-on-surface-variant { color: var(--on-surface-variant); }
-/* Màu sắc đặc trưng Mario */
-:root {
-  --mario-yellow: #fbd000;
-  --mario-orange: #eb8b00;
-  --mario-white: #ffffff;
-  --mario-shadow: rgba(0, 0, 0, 0.3);
-}
-
-/* 1. Hiệu ứng bầu trời xanh Mario */
-.pixel-bg {
-  background-image: radial-gradient(rgba(255,255,255,0.2) 2px, transparent 2px);
-  background-size: 32px 32px;
-}
-
-/* 2. Ô nhập OTP kiểu Question Block */
-.mario-input {
-  background-color: var(--mario-yellow) !important;
-  border: 4px solid #000 !important;
-  box-shadow: 
-    inset -4px -4px 0 0 var(--mario-orange), /* Bóng đổ trong tạo khối 3D */
-    4px 4px 0 0 var(--mario-shadow);
-  transition: all 0.1s steps(2);
-  cursor: pointer;
-}
-
-/* Khi đang nhập hoặc focus: Biến thành khối đã kích hoạt (màu trắng/sáng) */
-.mario-input:focus {
-  background-color: var(--mario-white) !important;
-  transform: translateY(-4px); /* Nhảy nhẹ lên */
-  box-shadow: 
-    inset -4px -4px 0 0 #bdc3c7,
-    0 8px 0 0 #000;
+.curator-input:focus {
+  background-color: var(--surface-container-lowest);
+  box-shadow: 0 0 0 2px rgba(23, 49, 36, 0.1);
   outline: none;
 }
 
-/* 3. Nút bấm kiểu nút A trên tay cầm NES */
-.pixel-border-button {
-  background-color: #ff0000 !important; /* Đỏ Mario */
-  border: 4px solid #000 !important;
-  box-shadow: 
-    inset -4px -4px 0 0 #a40009,
-    4px 4px 0 0 var(--mario-shadow);
-  transition: transform 0.05s steps(2);
+/* 6. NÚT BẤM (THAY CHO PIXEL-BORDER-BUTTON) */
+.btn-curator {
+  background: linear-gradient(to right, var(--primary), var(--primary-container));
+  color: var(--on-primary);
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
-.pixel-border-button:active {
-  transform: translateY(4px);
-  box-shadow: inset 2px 2px 0 0 #000;
+.btn-curator:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -5px rgba(23, 49, 36, 0.3);
 }
 
-/* 4. Ngọn đồi xanh có mắt (Hills with eyes) */
-.mario-hill {
-  border-top-left-radius: 60px;
-  border-top-right-radius: 60px;
-  border: 4px solid #000;
-  position: relative;
+.btn-curator:active {
+  transform: scale(0.98);
 }
 
-.mario-hill::before, .mario-hill::after {
-  content: '';
-  position: absolute;
-  background: #000;
-  width: 4px;
-  height: 12px;
-  top: 20px;
-  border-radius: 2px;
-}
-.mario-hill::before { left: 40%; }
-.mario-hill::after { right: 40%; }
+/* 7. ĐỊNH NGHĨA LẠI CÁC CLASS MÀU CHO TAILWIND */
+.bg-background { background-color: var(--background); }
+.bg-primary { background-color: var(--primary); }
+.bg-primary-container { background-color: var(--primary-container); }
+.bg-surface-container-low { background-color: var(--surface-container-low); }
+.bg-surface-container-high { background-color: var(--surface-container-high); }
+.bg-surface-container-lowest { background-color: var(--surface-container-lowest); }
+
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-on-surface-variant { color: var(--on-surface-variant); }
+
+/* Xóa bỏ hoàn toàn các class liên quan đến Mario cũ để tránh rác code */

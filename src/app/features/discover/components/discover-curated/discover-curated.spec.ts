@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationWidget } from './notification-widget';
+import { DiscoverCurated } from './discover-curated';
 
-describe('NotificationWidget', () => {
-  let component: NotificationWidget;
-  let fixture: ComponentFixture<NotificationWidget>;
+describe('DiscoverCurated', () => {
+  let component: DiscoverCurated;
+  let fixture: ComponentFixture<DiscoverCurated>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NotificationWidget],
+      imports: [DiscoverCurated],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NotificationWidget);
+    fixture = TestBed.createComponent(DiscoverCurated);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
