@@ -1,0 +1,52 @@
+<section class="mb-24 px-4 md:px-0">
+    <!-- Layout Bento Grid hiện đại -->
+    <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px] md:h-[800px] group/main">
+        
+        <!-- Ảnh chính: Chiếm 2x2 diện tích, bo góc lớn -->
+        <div class="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-[2rem] shadow-2xl transition-all duration-700 group/big">
+            <img alt="Main View" 
+                class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover/big:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCojsHVBwMnOC_83B6oKjHTnEkXMmL9iHAsvYfg1QNbqyJVOn_ZUCfYLWZl4Mg5q9aLe3hPXomeQxvvTa0tgvZ2OB6bVgoja4acYxyQ9M7b-MTTlKHCrEaGYpq7ud-WuWnoD8i8LS1AXFrSEHzcsHSgYchl8Bm5ZXKkzcR0iKWwPX0QME0OYRmw3SNhcDje4mJNSkj1s4KM1Q2F2gNAw_xboQNXTYMqFUvjwT0Iku-yeLMjqvQMm4EMHWiI4CxTh5In2_ql6VNCqoo" />
+            
+            <!-- Lớp phủ nghệ thuật -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/10 to-transparent opacity-0 group-hover/big:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Label tinh tế ở góc -->
+            <div class="absolute top-8 left-8">
+                <span class="bg-white/10 backdrop-blur-xl border border-white/20 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] opacity-0 group-hover/big:opacity-100 translate-y-4 group-hover/big:translate-y-0 transition-all duration-700">
+                    Exterior Architecture
+                </span>
+            </div>
+        </div>
+
+        <!-- Ảnh phụ 1: Khung dọc hiện đại -->
+        <div class="hidden md:block md:col-span-1 relative overflow-hidden rounded-[2rem] group/small">
+            <img alt="Interior" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover/small:scale-105"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHWz3ANVfh2IWNyMQ8aABVjBajK-bg8p2f8lmmX0lAwOpUQ4_ny8IqoGY5ygqvRcLCmic2GAFmiVsLLzhwDUqWuzQkLDyNld8prlDazPvsDuBNxXV2RoU41ElkmtwqrwYWAKRE5rmI7Ur_sFWQCMaMDUJ48bEPwmUAoGxX137zx8vQadkiv_WaLOW77qP2zy2fIW0MWW7iZG4qJbEUb8RDkZsyw7CkxTv1v6iGzTGJhAea3voRaAAQ5rB-Vm256xv-D7Www8ohyk0" />
+            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover/small:opacity-100 transition-opacity duration-500 mix-blend-overlay"></div>
+        </div>
+
+        <!-- Ảnh phụ 2: Khung ngang phía dưới -->
+        <div class="hidden md:block md:col-span-1 relative overflow-hidden rounded-[2rem] group/small">
+            <img alt="Sauna" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover/small:scale-105"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdjWlaZiHImnWfohA4QPWV5DGV41tnVr1_EQfqlRhmRgC_yFmBXOIy3ltqcGl1KU797hifKtFIduUCP-cjEAil-RZTsdfG2zZoGDIDwxxO-imTt--07OIvkgbGwaf30hOWyz1fvSVC4cM6Gzywkc_t8ZXDuyXGdHjZJg6W7L40FZDJkDZoXYrUuJ-ByWH9_NRVMZJ3lYbuC6jw7dYMNWLBcZJh9tEFbtc9OHsmw047JqXQ-hzGWZOHgSsGGhT6ZXGhnxGZAcBcV0c" />
+        </div>
+
+        <!-- Ảnh phụ 3: Ảnh rộng phía dưới chiếm 2 cột -->
+        <div class="hidden md:block md:col-span-2 relative overflow-hidden rounded-[2rem] group/cta">
+            <img alt="Atmosphere" 
+                class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover/cta:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdjWlaZiHImnWfohA4QPWV5DGV41tnVr1_EQfqlRhmRgC_yFmBXOIy3ltqcGl1KU797hifKtFIduUCP-cjEAil-RZTsdfG2zZoGDIDwxxO-imTt--07OIvkgbGwaf30hOWyz1fvSVC4cM6Gzywkc_t8ZXDuyXGdHjZJg6W7L40FZDJkDZoXYrUuJ-ByWH9_NRVMZJ3lYbuC6jw7dYMNWLBcZJh9tEFbtc9OHsmw047JqXQ-hzGWZOHgSsGGhT6ZXGhnxGZAcBcV0c" />
+            
+            <!-- Nút "View All" được thiết kế lại tối giản -->
+            <div class="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] opacity-0 group-hover/cta:opacity-100 transition-all duration-500">
+                <button class="bg-white text-primary px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center gap-3">
+                    <span class="material-symbols-outlined">zoom_out_map</span>
+                    Discover Full Gallery
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

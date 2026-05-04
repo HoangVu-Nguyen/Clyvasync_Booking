@@ -8,6 +8,7 @@ import { Dashboard } from './features/dashboard/dashboard';
 import { CallbackComponent } from './features/auth/callback/callback.component';
 import { HomestayList } from './features/homestay/homestay-list/homestay-list';
 import { Discover } from './features/discover/discover';
+import { HomestayDetail } from './features/homestay/pages/homestay-detail/homestay-detail';
 
 export const routes: Routes = [
   // 1. NHÓM KHÔNG CÓ LAYOUT (Auth)
@@ -25,7 +26,12 @@ export const routes: Routes = [
       // Vào thẳng localhost:4200 -> đá sang localhost:4200/home
       { path: '', redirectTo: 'discover', pathMatch: 'full' },
       { path: 'homestays', component: HomestayList, title: 'World Feed - Clyvasync' },
-      { path: 'discover', component: Discover, title: 'World Feed - Clyvasync' }
+      { path: 'discover', component: Discover, title: 'World Feed - Clyvasync' },
+      { 
+        path: 'homestay/:id', 
+        component: HomestayDetail, 
+        title: 'Chi tiết Homestay - Clyvasync' 
+      }
     ]
   },
 

@@ -1,0 +1,74 @@
+    <div class="sticky top-32 p-8 bg-white/80 backdrop-blur-2xl rounded-[2.5rem] shadow-[0px_32px_64px_rgba(0,0,0,0.08)] border border-white/40 ring-1 ring-black/5">
+        
+        <!-- Giá và Huy hiệu -->
+        <div class="flex justify-between items-start mb-10">
+            <div>
+                <p class="text-[10px] font-black text-primary/60 uppercase tracking-[0.2em] mb-1">Guaranteed Best Rate</p>
+                <h4 class="text-4xl font-black text-primary tracking-tighter">
+                    $1,250 <span class="text-base font-medium text-on-surface-variant tracking-normal">/night</span>
+                </h4>
+            </div>
+            <div class="bg-secondary/10 text-secondary p-2 rounded-xl">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+            </div>
+        </div>
+
+        <!-- Form Đặt phòng hiện đại -->
+        <div class="space-y-3 mb-10">
+            <div class="grid grid-cols-2 gap-3">
+                <div class="group bg-surface-container-highest/50 border border-outline-variant/10 p-4 rounded-[1.5rem] transition-all focus-within:border-primary focus-within:bg-white focus-within:shadow-sm">
+                    <label class="block text-[9px] font-black text-on-surface-variant uppercase tracking-widest ml-1 mb-1 group-focus-within:text-primary">Check-in</label>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm font-bold w-full p-0 text-primary placeholder:text-outline"
+                        type="text" value="Nov 24, 2024" />
+                </div>
+                <div class="group bg-surface-container-highest/50 border border-outline-variant/10 p-4 rounded-[1.5rem] transition-all focus-within:border-primary focus-within:bg-white focus-within:shadow-sm">
+                    <label class="block text-[9px] font-black text-on-surface-variant uppercase tracking-widest ml-1 mb-1 group-focus-within:text-primary">Check-out</label>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm font-bold w-full p-0 text-primary placeholder:text-outline"
+                        type="text" value="Nov 29, 2024" />
+                </div>
+            </div>
+            
+            <div class="group bg-surface-container-highest/50 border border-outline-variant/10 p-5 rounded-[1.5rem] flex items-center justify-between transition-all focus-within:border-primary focus-within:bg-white focus-within:shadow-sm">
+                <div class="flex-1">
+                    <label class="block text-[9px] font-black text-on-surface-variant uppercase tracking-widest ml-1 mb-1 group-focus-within:text-primary">Guests</label>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm font-bold w-full p-0 text-primary"
+                        type="text" value="2 Guests" readonly />
+                </div>
+                <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">expand_more</span>
+            </div>
+        </div>
+
+        <!-- Chi tiết thanh toán -->
+        <div class="space-y-4 mb-10 px-2">
+            <div class="flex justify-between text-sm font-medium">
+                <span class="text-on-surface-variant">$1,250 × 5 nights</span>
+                <span class="text-primary font-bold">$6,250</span>
+            </div>
+            <div class="flex justify-between text-sm font-medium">
+                <span class="text-on-surface-variant">Service fee</span>
+                <span class="text-primary font-bold">$150</span>
+            </div>
+            <div class="h-[1px] bg-gradient-to-r from-transparent via-outline-variant/40 to-transparent my-6"></div>
+            <div class="flex justify-between items-center">
+                <span class="text-lg font-bold text-primary">Total Amount</span>
+                <span class="text-2xl font-black text-primary tracking-tighter">$6,400</span>
+            </div>
+        </div>
+
+        <!-- Nút hành động chính -->
+        <div class="relative group">
+            <!-- Hiệu ứng Glow phía sau nút -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+            
+            <button class="relative w-full py-5 rounded-full bg-primary text-on-primary font-black text-lg tracking-widest uppercase shadow-xl transition-all hover:translate-y-[-2px] active:scale-[0.98] active:translate-y-0">
+                Confirm Booking
+            </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 mt-6">
+            <span class="material-symbols-outlined text-[16px] text-green-600">info</span>
+            <p class="text-center text-on-surface-variant text-[11px] font-bold uppercase tracking-tighter">
+                Risk-free booking: No charges yet
+            </p>
+        </div>
+    </div>
