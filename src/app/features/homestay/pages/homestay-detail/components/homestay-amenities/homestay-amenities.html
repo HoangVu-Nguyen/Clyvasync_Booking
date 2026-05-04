@@ -1,0 +1,64 @@
+<section class="py-12 border-t border-outline-variant/15">
+    <div class="flex items-center justify-between mb-10">
+        <div>
+            <h3 class="text-3xl font-headline font-bold text-primary tracking-tight">Curated Amenities</h3>
+            <p class="text-on-surface-variant mt-2 font-medium">Everything you need for a perfect stay in the wild.</p>
+        </div>
+        <!-- Nút xem thêm trên Desktop -->
+        <button class="hidden md:flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all group">
+            <span>View all 24 amenities</span>
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <!-- Amenity Item: Private Sauna -->
+        <div class="flex items-start gap-5 p-6 bg-surface-container-lowest border border-outline-variant/10 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/20 group">
+            <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-primary/5 rounded-xl text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <span class="material-symbols-outlined text-[28px]">hot_tub</span>
+            </div>
+            <div>
+                <p class="font-bold text-lg text-primary mb-1">Private Sauna</p>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Experience Nordic cedar finishes with panoramic volcanic views.</p>
+            </div>
+        </div>
+
+        <!-- Amenity Item: Floor-to-ceiling windows -->
+        <div class="flex items-start gap-5 p-6 bg-surface-container-lowest border border-outline-variant/10 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/20 group">
+            <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-primary/5 rounded-xl text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <span class="material-symbols-outlined text-[28px]">window</span>
+            </div>
+            <div>
+                <p class="font-bold text-lg text-primary mb-1">Floor-to-ceiling windows</p>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Triple-glazed obsidian framing for total landscape immersion.</p>
+            </div>
+        </div>
+
+        <!-- Amenity Item: Underfloor heating -->
+        <div class="flex items-start gap-5 p-6 bg-surface-container-lowest border border-outline-variant/10 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/20 group">
+            <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-primary/5 rounded-xl text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <span class="material-symbols-outlined text-[28px]">thermostat</span>
+            </div>
+            <div>
+                <p class="font-bold text-lg text-primary mb-1">Underfloor heating</p>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Geothermal warmth flowing beneath authentic volcanic tiles.</p>
+            </div>
+        </div>
+
+        <!-- Amenity Item: High-Speed Satellite -->
+        <div class="flex items-start gap-5 p-6 bg-surface-container-lowest border border-outline-variant/10 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/20 group">
+            <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-primary/5 rounded-xl text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <span class="material-symbols-outlined text-[28px]">wifi</span>
+            </div>
+            <div>
+                <p class="font-bold text-lg text-primary mb-1">High-Speed Satellite</p>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Stay connected with Starlink high-speed internet in the wild.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile-only View all button -->
+    <button class="w-full mt-8 py-4 border border-outline-variant/20 rounded-xl text-primary font-bold md:hidden active:scale-95 transition-transform">
+        View all 24 amenities
+    </button>
+</section>
