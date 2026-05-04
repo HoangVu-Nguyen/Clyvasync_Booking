@@ -1,21 +1,23 @@
 <div class="container mx-auto px-4 md:px-8 max-w-10xl">
     <app-homestay-header></app-homestay-header>
-    
+
     <div class="mb-16">
         <app-homestay-gallery></app-homestay-gallery>
     </div>
 
     <!-- Quan trọng: items-start giúp cột phải không bị kéo giãn bừa bãi -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
-        
+
         <!-- Cột trái (Nội dung dài) -->
         <div class="lg:col-span-8 space-y-24">
+            @if (homestayService.currentHomestay()) {
             <app-homestay-amenities></app-homestay-amenities>
             <app-homestay-location></app-homestay-location>
             <app-homestay-reviews></app-homestay-reviews>
+            }
         </div>
 
-      
+
         <aside class="lg:col-span-4 w-full min-w-[350px] h-full">
             <app-homestay-booking-widget></app-homestay-booking-widget>
         </aside>

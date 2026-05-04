@@ -1,87 +1,131 @@
 <section class="py-16 border-t border-outline-variant/15">
     <!-- Header: Stats & Summary -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
             <h3 class="text-3xl font-headline font-bold text-primary tracking-tight">Guest Experiences</h3>
             <p class="text-on-surface-variant mt-2 font-medium">Real stories from our global community of travelers.</p>
         </div>
         
-        <div class="flex items-center gap-6 bg-surface-container-low p-4 rounded-2xl border border-outline-variant/10 shadow-sm">
-            <div class="flex flex-col items-center px-4 border-r border-outline-variant/20">
+        <div class="flex items-center gap-5 bg-white px-6 py-3 rounded-2xl border border-outline-variant/20 shadow-sm">
+            <div class="flex flex-col items-center pr-5 border-r border-outline-variant/30">
                 <div class="flex items-center text-primary gap-1">
-                    <span class="text-3xl font-black">4.95</span>
-                    <span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="text-2xl font-black">4.95</span>
+                    <span class="material-symbols-outlined text-amber-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
                 </div>
-                <span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Rating</span>
             </div>
-            <div class="px-4">
-                <p class="text-xl font-bold text-primary">128</p>
-                <p class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Reviews</p>
+            <div class="flex flex-col">
+                <p class="text-lg font-bold text-primary leading-none">128</p>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mt-0.5">Reviews</p>
             </div>
         </div>
     </div>
 
-    <!-- Reviews Grid -->
-    <div class="grid grid-cols-1 gap-12">
-        <!-- Review Card 1 -->
-        <article class="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-[2rem] transition-all duration-500 hover:bg-surface-container-lowest hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
-            <!-- Guest Info -->
-            <div class="md:col-span-3 flex flex-col items-center md:items-start">
-                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 border-2 border-white shadow-md overflow-hidden">
-                    <span class="text-xl font-bold text-primary">EV</span>
+    <!-- Modern Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(320px,auto)]">
+        
+        <!-- 1. THE FEATURED CARD (Trải dài 2 cột, chia đôi Chữ - Ảnh) -->
+        <article class="md:col-span-2 bg-white border border-outline-variant/20 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row transition-all hover:shadow-xl hover:border-primary/20 group">
+            <div class="p-8 sm:w-3/5 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-500 gap-0.5 mb-4">
+                        <span *ngFor="let i of [1,2,3,4,5]" class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-lg leading-relaxed text-on-surface-variant font-medium mb-6">
+                        "An absolute masterpiece. Watching the aurora from the private sauna was a spiritual experience. The way the light hits the obsidian walls at dusk is pure magic. We will return."
+                    </p>
                 </div>
-                <p class="font-headline font-bold text-lg text-primary">Elena Voss</p>
-                <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">October 2024</p>
-                <div class="flex text-secondary gap-0.5">
-                    <span *ngFor="let i of [1,2,3,4,5]" class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                        <span class="text-sm font-bold text-primary">EV</span>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary text-sm">Elena Voss</p>
+                        <p class="text-[10px] font-medium text-on-surface-variant">October 2024</p>
+                    </div>
                 </div>
             </div>
+            <!-- Ảnh cover bên phải -->
+            <div class="h-64 sm:h-auto sm:w-2/5 relative overflow-hidden">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1531366930499-61a5ad20ee85?auto=format&fit=crop&w=600" alt="Aurora" />
+            </div>
+        </article>
 
-            <!-- Content -->
-            <div class="md:col-span-9 space-y-6">
-                <blockquote class="text-xl leading-relaxed text-on-surface-variant font-body italic">
-                    "An absolute masterpiece. Watching the aurora from the private sauna was a spiritual experience. The attention to detail in the architecture is unlike anything I've seen—the way the light hits the obsidian walls at dusk is pure magic."
-                </blockquote>
-                
-                <!-- Guest Photos Gallery -->
-                <div class="flex flex-wrap gap-4">
-                    <div class="relative w-28 h-28 rounded-2xl overflow-hidden group/img cursor-zoom-in">
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" src="https://images.unsplash.com/photo-1531366930499-61a5ad20ee85?auto=format&fit=crop&w=300" />
-                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover/img:opacity-100 transition-opacity"></div>
+        <!-- 2. THE DARK ACCENT CARD (Thẻ nền tối tạo điểm nhấn) -->
+        <article class="bg-[#0a0a0a] rounded-[2rem] p-8 flex flex-col justify-between transition-all hover:shadow-2xl hover:-translate-y-1 group relative overflow-hidden">
+            <!-- Glow effect mờ ở góc -->
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/30 blur-3xl rounded-full transition-all group-hover:bg-primary/50"></div>
+            
+            <div class="relative z-10">
+                <div class="flex text-amber-400 gap-0.5 mb-6">
+                    <span *ngFor="let i of [1,2,3,4,5]" class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="text-lg leading-relaxed text-white/90 font-light mb-6">
+                    "The remote location is exactly what we needed. Total silence, interrupted only by the Icelandic wind. Unforgettable."
+                </p>
+            </div>
+            <div class="relative z-10 border-t border-white/10 pt-4 mt-auto">
+                <p class="font-bold text-white text-sm mb-0.5">Julian Thorne</p>
+                <p class="text-[10px] text-white/50 tracking-widest uppercase">September 2024</p>
+            </div>
+        </article>
+
+        <!-- 3. THE VISUAL CARD (Ảnh tràn viền, text kính mờ) -->
+        <article class="relative bg-surface-container rounded-[2rem] overflow-hidden group min-h-[320px] shadow-sm hover:shadow-xl transition-all">
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600" alt="Sauna View" />
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            
+            <div class="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-[1.5rem] p-5 transition-all group-hover:bg-white/20">
+                <div class="flex text-amber-400 gap-0.5 mb-2">
+                    <span *ngFor="let i of [1,2,3,4,5]" class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="text-white/90 text-sm font-medium mb-3 line-clamp-2">"Waking up to this view is something I can't put into words."</p>
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                        <span class="text-[9px] font-bold text-white">SC</span>
                     </div>
-                    <div class="relative w-28 h-28 rounded-2xl overflow-hidden group/img cursor-zoom-in">
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300" />
-                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover/img:opacity-100 transition-opacity"></div>
-                    </div>
+                    <span class="text-white text-xs font-bold">Sarah Chen</span>
                 </div>
             </div>
         </article>
 
-        <!-- Review Card 2 (Minimal) -->
-        <article class="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-[2rem] transition-all duration-500 hover:bg-surface-container-lowest hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
-            <div class="md:col-span-3 flex flex-col items-center md:items-start">
-                <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4 border-2 border-white shadow-md">
-                    <span class="text-xl font-bold text-secondary">JT</span>
+        <!-- 4. THE COMPACT GALLERY CARD (Trải dài 2 cột, chứa text và lưới ảnh) -->
+        <article class="md:col-span-2 bg-white border border-outline-variant/20 rounded-[2rem] p-8 transition-all hover:shadow-xl hover:border-primary/20 flex flex-col sm:flex-row gap-8">
+            <div class="sm:w-1/2 flex flex-col justify-center">
+                <div class="flex text-amber-500 gap-0.5 mb-4">
+                    <span *ngFor="let i of [1,2,3,4,5]" class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
                 </div>
-                <p class="font-headline font-bold text-lg text-primary">Julian Thorne</p>
-                <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">September 2024</p>
-                <div class="flex text-secondary gap-0.5">
-                    <span *ngFor="let i of [1,2,3,4,5]" class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <p class="text-base leading-relaxed text-on-surface-variant mb-6">
+                    "The minimalist design perfectly frames the wild landscape outside. Every amenity feels intentional and luxurious. The photos don't even do it justice."
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+                        <span class="text-sm font-bold text-primary">MR</span>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary text-sm">Marcus Reed</p>
+                        <p class="text-[10px] font-medium text-on-surface-variant">August 2024</p>
+                    </div>
                 </div>
             </div>
-            <div class="md:col-span-9">
-                <blockquote class="text-xl leading-relaxed text-on-surface-variant font-body italic">
-                    "The remote location is exactly what we needed. Total silence, interrupted only by the Icelandic wind. The Starlink worked perfectly, but the view made it hard to look at the screen."
-                </blockquote>
+            <!-- Lưới ảnh nhỏ (Mini Masonry) -->
+            <div class="sm:w-1/2 grid grid-cols-2 gap-3">
+                <div class="rounded-2xl overflow-hidden h-32 relative group/img cursor-zoom-in">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" src="https://images.unsplash.com/photo-1518733057094-95b53143d2a7?auto=format&fit=crop&w=300" />
+                </div>
+                <div class="rounded-2xl overflow-hidden h-32 relative group/img cursor-zoom-in mt-6">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" src="https://images.unsplash.com/photo-1542314831-c6a4d1409384?auto=format&fit=crop&w=300" />
+                </div>
             </div>
         </article>
+
     </div>
 
     <!-- Bottom Action -->
-    <div class="mt-16 flex justify-center">
-        <button class="flex items-center gap-3 bg-primary text-on-primary px-10 py-4 rounded-full font-bold shadow-xl hover:shadow-primary/20 hover:scale-105 transition-all active:scale-95">
-            <span>Discover all 128 stories</span>
-            <span class="material-symbols-outlined">auto_stories</span>
+    <div class="mt-12 flex justify-center">
+        <button class="flex items-center gap-3 bg-white border border-outline-variant/30 text-primary px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-widest hover:border-primary hover:bg-surface-container-lowest transition-all active:scale-95 group">
+            <span>Read all 128 reviews</span>
+            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </button>
     </div>
 </section>
