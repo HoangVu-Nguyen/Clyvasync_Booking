@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Clyvasync_Network": {
+    "Clyvasync_Booking": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -83,10 +83,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Clyvasync_Network:build:production"
+              "buildTarget": "Clyvasync_Booking:build:production"
             },
             "development": {
-              "buildTarget": "Clyvasync_Network:build:development"
+              "buildTarget": "Clyvasync_Booking:build:development"
             }
           },
           "defaultConfiguration": "development"
