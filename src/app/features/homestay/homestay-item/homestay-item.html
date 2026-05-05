@@ -1,4 +1,4 @@
-<div class="relative w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-[1.2s] ease-[cubic-bezier(0.25,1,0.1,1)] bg-[#1a1a1a]">
+<div [routerLink]="['/homestay', homestay.id]" class="relative w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-[1.2s] ease-[cubic-bezier(0.25,1,0.1,1)] bg-[#1a1a1a]">
     
     <!-- 1A. Ảnh Nguyên Bản (Ảnh 1): Mặc định hiển thị, sáng dần và thu nhỏ khi hover -->
     <img [src]="homestay.images?.[0] || coverImage" 

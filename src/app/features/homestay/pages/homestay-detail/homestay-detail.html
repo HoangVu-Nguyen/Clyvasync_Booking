@@ -10,10 +10,10 @@
 
         <!-- Cột trái (Nội dung dài) -->
         <div class="lg:col-span-8 space-y-24">
-            @if (homestayService.currentHomestay()) {
+            @if (homestay()) {
             <app-homestay-amenities></app-homestay-amenities>
             <app-homestay-location></app-homestay-location>
-            <app-homestay-reviews></app-homestay-reviews>
+            <app-homestay-reviews [homestayId]="homestay()!.id"></app-homestay-reviews>
             }
         </div>
 

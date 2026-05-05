@@ -1,8 +1,10 @@
 export interface PageResponse<T> {
   content: T[];
-  totalPages: number;
   totalElements: number;
+  totalPages: number;
   size: number;
   number: number;
   last: boolean;
+  first: boolean;
+   averageRating?: number; 
 }

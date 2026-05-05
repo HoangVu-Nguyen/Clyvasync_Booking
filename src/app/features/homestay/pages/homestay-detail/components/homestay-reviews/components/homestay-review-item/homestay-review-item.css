@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.bento-card {
+  /* Thay thế @apply bằng CSS thuần để tránh lỗi build */
+  background-color: white;
+  border: 1px solid rgba(231, 229, 228, 0.5); /* border-stone-200/50 */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Mượt hơn ease-out */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border-radius: 24px;
+}
+
+.bento-card:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border-color: rgba(23, 49, 36, 0.2); /* primary/20 */
+  transform: translateY(-4px);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem; /* p-8 */
+}
+
+.review-text {
+  color: #44403c; /* text-stone-700 */
+  line-height: 1.625;
+  font-weight: 500;
+  font-style: italic;
+  /* Line clamp thủ công */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hiệu ứng fadeInUp mượt mà khi load thêm */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+article {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

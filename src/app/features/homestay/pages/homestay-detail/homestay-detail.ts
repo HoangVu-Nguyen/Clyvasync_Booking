@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Thêm cái này
 import { HomestayHeader } from './components/homestay-header/homestay-header';
 import { HomestayGallery } from './components/homestay-gallery/homestay-gallery';
@@ -14,36 +14,29 @@ import { CommonModule } from '@angular/common'; // Thêm để dùng async pipe 
   standalone: true, // Đảm bảo component là standalone
   imports: [
     CommonModule,
-    HomestayHeader, 
-    HomestayGallery, 
-    HomestayAmenities, 
-    HomestayLocation, 
-    HomestayReviews, 
+    HomestayHeader,
+    HomestayGallery,
+    HomestayAmenities,
+    HomestayLocation,
+    HomestayReviews,
     HomestayBookingWidget
   ],
   templateUrl: './homestay-detail.html',
   styleUrl: './homestay-detail.css',
 })
 export class HomestayDetail implements OnInit {
-  
+
   constructor(
     public homestayService: HomestayService,
     private route: ActivatedRoute // Inject route để đọc param
   ) { }
-
+  homestay = computed(() => this.homestayService.currentHomestay());
   ngOnInit() {
-    // Đọc ID từ URL (tên 'id' phải khớp với tên đặt trong App Routing)
-    const id = this.route.snapshot.paramMap.get('id');
-    
+    this.route.paramMap.subscribe(params => {
+    const id = params.get('id');
     if (id) {
-      this.homestayService.getHomestayById(Number(id)).subscribe({
-        next: (response) => {
-          console.log('Dữ liệu homestay đã tải:', response.data);
-        },
-        error: (err) => {
-          console.error('Lỗi khi tải chi tiết homestay:', err);
-        }
-      });
+      this.homestayService.getHomestayById(Number(id)).subscribe();
     }
+  });
   }
 }

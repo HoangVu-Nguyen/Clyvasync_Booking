@@ -6,6 +6,7 @@ import { UserPhotoResponse } from "../../models/response/user-photo.response";
 import { ApiResponse } from "../../models/response/api.response";
 import { HomestayResponse } from "../../models/response/homestay.response";
 import { PageResponse } from "../../models/response/page.response";
+import { ReviewResponse } from "../../models/response/review.response";
 
 @Injectable({ providedIn: 'root' })
 export class HomestayService {
@@ -13,12 +14,11 @@ export class HomestayService {
     private currentHomestaySignal = signal<HomestayResponse | null>(null);
     readonly currentHomestay = this.currentHomestaySignal.asReadonly();
 
-    getAllHomestays(): Observable<ApiResponse<PageResponse<HomestayResponse>>> {
-        return this.apiService.get<ApiResponse<PageResponse<HomestayResponse>>>(`/api/v1/homestays/search`)
-            .pipe(
-                map(response => response)
-            );
-    }
+    getAllHomestays(page: number = 0, size: number = 10): Observable<ApiResponse<PageResponse<HomestayResponse>>> {
+    return this.apiService.get<ApiResponse<PageResponse<HomestayResponse>>>(
+        `/api/v1/homestays/search?page=${page}&size=${size}`
+    );
+}
     getHomestayById(id: number): Observable<ApiResponse<HomestayResponse>> {
         return this.apiService.get<ApiResponse<HomestayResponse>>(`/api/v1/homestays/${id}`)
             .pipe(
@@ -32,6 +32,12 @@ export class HomestayService {
     
     getCurrentData() {
         return this.currentHomestaySignal();
+    }
+    getReviewsByHomestay(homestayId: number, page: number = 0, size: number = 4): Observable<ApiResponse<PageResponse<ReviewResponse>>> {
+    return this.apiService.get<ApiResponse<PageResponse<ReviewResponse>>>(
+        `/api/v1/reviews/homestay/${homestayId}?page=${page}&size=${size}`
+    );
+
     }
 
 }

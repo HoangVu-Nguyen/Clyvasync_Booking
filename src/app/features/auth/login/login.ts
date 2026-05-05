@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Header } from '../../../layout/header/header';
 import { Footer } from '../../../layout/footer/footer';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
@@ -10,7 +9,7 @@ import { authCodeFlowConfig } from '../../../core/configs/auth.config';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, Header, Footer],
+  imports: [CommonModule, Footer],
   templateUrl: './login.html'
 })
 export class Login {

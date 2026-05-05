@@ -1,33 +1,107 @@
-<!-- Hero Section -->
-<section class="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4 md:px-8 overflow-hidden">
-<div class="absolute inset-0 z-0">
-<video #videoRef muted loop playsinline class="w-full h-full object-cover">
-  <source src="assets/video/320598.mp4" type="video/mp4">
-</video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-background"></div>
-</div>
-<div class="relative z-10 text-center max-w-4xl mx-auto mb-12">
-<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-8 drop-shadow-lg">
-                    Hành trình tìm về bản sắc.
-                </h1>
-</div>
-<!-- Search Bar (Pill-shaped localized) -->
-<div class="relative z-20 w-full max-w-4xl bg-surface-container-lowest/90 backdrop-blur-xl p-3 rounded-full shadow-[0px_24px_48px_rgba(28,28,25,0.08)] flex flex-col md:flex-row items-center gap-2">
-<div class="flex-1 w-full px-6 py-2 border-r border-outline-variant/15 text-left">
-<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Điểm đến</label>
-<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder:text-stone-400 font-medium" placeholder="Bạn muốn đi đâu?" type="text"/>
-</div>
-<div class="flex-1 w-full px-6 py-2 border-r border-outline-variant/15 text-left">
-<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Ngày nhận phòng</label>
-<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder:text-stone-400 font-medium" placeholder="Thêm ngày" type="text"/>
-</div>
-<div class="flex-1 w-full px-6 py-2 text-left">
-<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Khách</label>
-<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder:text-stone-400 font-medium" placeholder="Thêm khách" type="text"/>
-</div>
-<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary w-full md:w-auto h-14 md:h-14 px-8 rounded-full flex items-center justify-center gap-2 font-semibold hover:opacity-90 transition-all active:scale-95">
-<span class="material-symbols-outlined" data-icon="search">search</span>
-                    Tìm kiếm
+<!-- Avant-Garde Hero Section (Độc lạ, Nghệ thuật, Cảm xúc) -->
+<section class="relative min-h-[100svh] bg-[#030303] overflow-hidden flex items-center">
+    
+    <!-- ========================================== -->
+    <!-- 1. KẾT CẤU BẤT ĐỐI XỨNG (ASYMMETRICAL VIDEO ARCH) -->
+    <!-- ========================================== -->
+    <!-- Khung video hình vòm (Arch) lệch sang phải, tạo không gian âm (negative space) đầy nghệ thuật -->
+    <div class="absolute right-0 top-0 bottom-0 w-full md:w-[55%] h-full z-0 animate-[clip-reveal_1.5s_ease-out_forwards]">
+        <!-- Clip-path tạo hình vòm kiến trúc ở góc trên/dưới bên trái -->
+        <div class="w-full h-full md:rounded-l-[6rem] overflow-hidden relative">
+            <video #videoRef muted loop playsinline autoplay class="w-full h-full object-cover scale-110 animate-[slow-pan_30s_linear_infinite_alternate] opacity-60 md:opacity-80">
+                <source src="https://cdn.pixabay.com/video/2020/12/15/59291-492700392_large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#030303] via-transparent to-black/40"></div>
+            <!-- Lưới họa tiết mờ (Grid pattern) tăng tính công nghệ/microservices -->
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+        </div>
+    </div>
+
+    <!-- Nút "Dấu ấn" lơ lửng quay tròn (Spinning Stamp) - Chi tiết siêu sang -->
+    <div class="absolute right-8 bottom-8 z-30 hidden lg:flex items-center justify-center animate-[fade-in_2s_ease-out]">
+        <div class="relative w-32 h-32 flex items-center justify-center cursor-pointer group">
+            <!-- Chữ chạy vòng tròn -->
+            <svg viewBox="0 0 100 100" class="w-full h-full animate-[spin_10s_linear_infinite] opacity-60 group-hover:opacity-100 transition-opacity">
+                <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+                <text class="text-[10px] font-bold uppercase tracking-[0.2em]" fill="white">
+                    <textPath href="#circlePath">EST. 2026 • CLYVASYNC RETREATS •</textPath>
+                </text>
+            </svg>
+            <!-- Nút Play/Explore ở giữa -->
+            <div class="absolute w-12 h-12 bg-[#e8c39e] rounded-full flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-500">
+                <span class="material-symbols-outlined text-[20px]">explore</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. NỘI DUNG CHÍNH (Đè lên không gian âm và video) -->
+    <!-- ========================================== -->
+    <div class="relative  w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col justify-center">
+        
+        <!-- Typography: Phá cách, to bản, kết hợp Serif và Sans-serif -->
+        <div class="max-w-3xl animate-[fade-in-up_1s_ease-out]">
+            <p class="text-[#e8c39e] text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mb-8 flex items-center gap-4">
+                <span class="w-12 h-[1px] bg-[#e8c39e]"></span>
+                Định hình phong cách sống
+            </p>
+            
+            <h1 class="font-headline text-[3.5rem] md:text-[6rem] lg:text-[7rem] font-medium text-white leading-[1] tracking-tighter mb-4">
+                Tìm về <br/>
+                <span class="font-serif italic font-light text-transparent bg-clip-text bg-gradient-to-r from-[#e8c39e] to-white ml-0 md:ml-24">bản sắc.</span>
+            </h1>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 3. NATURAL LANGUAGE FORM (CÚ HIẾP ĐỘC LẠ NHẤT) -->
+        <!-- ========================================== -->
+        <!-- Form tìm kiếm dạng câu văn điền từ, mang tính cá nhân hóa cực cao -->
+        <div class="mt-16 md:mt-24 max-w-4xl animate-[fade-in-up_1.5s_ease-out]">
+            <div class="text-2xl md:text-4xl lg:text-[2.75rem] font-light text-white/70 leading-[1.6] md:leading-[1.8] font-serif">
+                "Tôi muốn tạm gác lại bộn bề, <br class="hidden md:block"/>
+                tìm một nơi trú ẩn tại
+                
+                <!-- Input 1: Địa điểm -->
+                <div class="relative inline-block group mx-2 translate-y-1 md:translate-y-2">
+                    <input type="text" 
+                           class="w-[160px] md:w-[220px] bg-transparent border-b border-white/20 hover:border-[#e8c39e] focus:border-[#e8c39e] text-white focus:text-[#e8c39e] font-serif italic focus:ring-0 px-0 py-1 text-center placeholder:text-white/20 transition-colors duration-300 outline-none" 
+                           placeholder="Một nơi nào đó">
+                </div>
+                
+                vào ngày
+                
+                <!-- Input 2: Thời gian -->
+                <div class="relative inline-block group mx-2 translate-y-1 md:translate-y-2">
+                    <input type="text" 
+                           class="w-[130px] md:w-[160px] bg-transparent border-b border-white/20 hover:border-[#e8c39e] focus:border-[#e8c39e] text-white focus:text-[#e8c39e] font-serif italic focus:ring-0 px-0 py-1 text-center placeholder:text-white/20 transition-colors duration-300 outline-none cursor-pointer" 
+                           readonly placeholder="Chọn ngày">
+                </div>
+                
+                cùng
+                
+                <!-- Input 3: Khách -->
+                <div class="relative inline-block group mx-2 translate-y-1 md:translate-y-2">
+                    <input type="text" 
+                           class="w-[100px] md:w-[130px] bg-transparent border-b border-white/20 hover:border-[#e8c39e] focus:border-[#e8c39e] text-white focus:text-[#e8c39e] font-serif italic focus:ring-0 px-0 py-1 text-center placeholder:text-white/20 transition-colors duration-300 outline-none cursor-pointer" 
+                           readonly placeholder="Ai đó">
+                </div>."
+            </div>
+
+            <!-- Nút Submit thanh lịch -->
+            <div class="mt-12 flex items-center gap-6">
+                <button class="relative overflow-hidden group/btn px-10 py-4 rounded-full bg-white text-black font-bold uppercase tracking-[0.2em] text-[11px] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-500">
+                    <span class="relative z-10 group-hover/btn:text-white transition-colors duration-500">Bắt đầu hành trình</span>
+                    <div class="absolute inset-0 h-full w-0 bg-[#173124] group-hover/btn:w-full transition-all duration-500 ease-out z-0"></div>
                 </button>
-</div>
+                <span class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Khám phá 120+ không gian</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tọa độ trang trí dọc (Vertical Coordinates) -->
+    <div class="absolute left-6 bottom-1/2 translate-y-1/2 -rotate-90 origin-left z-20 hidden xl:block opacity-30">
+        <p class="text-[10px] text-white font-mono tracking-[0.3em]">10.0452° N, 105.7469° E // CAN THO</p>
+    </div>
+
 </section>

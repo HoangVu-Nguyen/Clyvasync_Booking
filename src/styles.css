@@ -114,3 +114,9 @@ html, body {
 .text-on-surface-variant { color: var(--on-surface-variant); }
 
 /* Xóa bỏ hoàn toàn các class liên quan đến Mario cũ để tránh rác code */
+/* Tùy chỉnh thời gian và kiểu chuyển cảnh toàn trang */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

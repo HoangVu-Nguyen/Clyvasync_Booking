@@ -30,7 +30,7 @@ export const routes: Routes = [
       { 
         path: 'homestay/:id', 
         component: HomestayDetail, 
-        title: 'Chi tiết Homestay - Clyvasync' 
+        title: 'Chi tiết Homestay - Clyvasync'
       }
     ]
   },

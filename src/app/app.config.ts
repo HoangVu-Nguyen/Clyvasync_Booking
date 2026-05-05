@@ -1,19 +1,14 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions, withInMemoryScrolling } from '@angular/router'; // Thêm các tính năng router
 import { provideOAuthClient } from 'angular-oauth2-oidc';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors, HttpInterceptorFn } from '@angular/common/http';
 
-/** 
- * Interceptor để ép trình duyệt đính kèm Cookie (Refresh Token) 
- * vào mọi request gửi lên Backend của bạn.
- */
 export const credentialsInterceptor: HttpInterceptorFn = (req, next) => {
-  // Kiểm tra nếu request gửi tới Backend (8443)
   if (req.url.includes(':8443')) {
     req = req.clone({
-      withCredentials: true // Ép gửi Cookie HttpOnly
+      withCredentials: true
     });
   }
   return next(req);
@@ -23,16 +18,25 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     
-    // 1. Cấu hình HttpClient: Kết hợp Fetch và Interceptor để gửi Cookie
     provideHttpClient(
       withFetch(), 
       withInterceptors([credentialsInterceptor])
     ), 
 
-    // 2. OAuthClient
     provideOAuthClient(), 
 
-    provideRouter(routes), 
+    // CẤU HÌNH ROUTER MƯỢT MÀ
+    provideRouter(
+      routes,
+      // 1. Kích hoạt hiệu ứng chuyển cảnh "biến hình" giữa các trang
+      withViewTransitions(), 
+      // 2. Tự động cuộn lên đầu trang khi chuyển sang Homestay mới
+      withInMemoryScrolling({ 
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled'
+      })
+    ), 
+
     provideClientHydration(withEventReplay())
   ]
 };

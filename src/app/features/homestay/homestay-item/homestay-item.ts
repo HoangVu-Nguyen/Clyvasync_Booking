@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, Input, OnInit, signal } from '@angular/core';
 import {  HomestayResponse } from '../../../core/models/response/homestay.response';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-homestay-item',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './homestay-item.html',
   styleUrl: './homestay-item.css',
 })
