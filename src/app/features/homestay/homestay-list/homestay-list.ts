@@ -19,7 +19,9 @@ constructor(
 ngOnInit(): void {
   this.homestayService.getAllHomestays().subscribe({
     next: (res) => {
+     
       this.homestaysRespone = res.data.content;
+       console.log(this.homestaysRespone)
       this.cdr.detectChanges(); // 3. Gọi hàm này ngay sau khi gán data
     }
   });

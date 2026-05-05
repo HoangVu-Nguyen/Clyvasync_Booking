@@ -1,26 +1,87 @@
-<main class="pt-32 pb-24 max-w-screen-2xl mx-auto px-6 md:px-8">
+<main class="pt-32 pb-24 max-w-screen-2xl mx-auto px-6 md:px-12 bg-[#fcfcf9]">
   
-  <div class="mb-16">
-    <h1 class="text-6xl md:text-[5rem] font-bold tracking-tighter text-[#173124] leading-[0.9] mb-4 font-headline uppercase">
-      Điểm đến tinh hoa
+  <!-- Header: Typography khổng lồ kiểu Tạp chí -->
+  <!-- ========================================== -->
+<!-- HERO HEADER: THE EDITORIAL TYPOGRAPHY      -->
+<!-- ========================================== -->
+<header class="relative pt-20 pb-32 mb-12 border-b border-stone-200/60">
+  
+  <!-- Nhãn nhỏ lơ lửng phía trên (Kích thích thị giác) -->
+  <div class="flex items-center gap-6 mb-8 md:mb-12">
+    <div class="w-16 h-[1px] bg-[#974728]"></div>
+    <span class="text-[9px] uppercase tracking-[0.4em] font-black text-[#974728]">Clyvasync Exclusives</span>
+  </div>
+
+  <!-- Bố cục Chữ Bất Đối Xứng (Asymmetrical Typography) -->
+  <div class="relative z-10 w-full">
+    <h1 class="text-7xl md:text-[11rem] lg:text-[13rem] font-headline tracking-tighter leading-[0.75] uppercase text-[#173124]">
+      <!-- Chữ dòng 1: Nét thanh, mỏng, trong suốt nhẹ -->
+      <span class="block font-light text-transparent bg-clip-text bg-gradient-to-b from-[#173124] to-stone-500/80 -ml-2">
+        Tinh hoa
+      </span>
+      <!-- Chữ dòng 2: Nét siêu đậm, thụt lùi vào trong (Indent), điểm nhấn Dấu chấm Đồng -->
+      <span class="block font-black md:ml-[15%] lg:ml-[20%] mt-2 md:mt-4">
+        Điểm đến<span class="text-[#974728]">.</span>
+      </span>
     </h1>
-    <p class="text-stone-600 max-w-xl text-lg font-medium leading-relaxed font-body">
-      Bộ sưu tập những không gian nghỉ dưỡng độc bản, nơi kiến trúc đỉnh cao giao thoa cùng chiều sâu cảm xúc. Dành riêng cho những hành trình trải nghiệm tinh tế.
+  </div>
+
+  <!-- Đoạn văn bản mô tả: Đẩy lơ lửng góc phải trên Desktop -->
+  <div class="mt-12 md:mt-0 md:absolute md:top-32 md:right-0 max-w-sm z-20">
+    <p class="text-stone-500 text-sm md:text-base font-medium leading-relaxed font-body relative before:content-[''] before:absolute before:-left-6 before:top-2 before:w-[2px] before:h-12 before:bg-[#e8c39e] pl-2 md:pl-0">
+      Trải nghiệm không gian sống độc bản, nơi mỗi chi tiết kiến trúc đều được chế tác để tôn vinh vẻ đẹp của sự tĩnh lặng và chiều sâu cảm xúc.
     </p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-24">
+  <!-- Bảng Thống kê (Architectural Stats) & Rotating Seal -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between mt-24 md:mt-32">
+    
+    <!-- Các con số thống kê xếp dọc với đường Line mảnh -->
+    <div class="flex items-end gap-12 md:gap-20">
+      <div class="flex flex-col">
+        <span class="text-6xl md:text-7xl font-black font-headline text-[#173124] leading-none tracking-tighter">{{homestaysRespone.length}}</span>
+        <span class="text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold mt-4">Residences</span>
+      </div>
+      
+      <div class="w-[1px] h-16 bg-stone-200 mb-2"></div>
+      
+      <div class="flex flex-col">
+        <span class="text-6xl md:text-7xl font-black font-headline text-[#173124] leading-none tracking-tighter">08</span>
+        <span class="text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold mt-4">Cities</span>
+      </div>
+    </div>
+
+    <!-- Con dấu xoay tròn (Rotating Seal) - UX Đỉnh cao -->
+    <div class="hidden md:flex relative w-32 h-32 items-center justify-center mt-12 md:mt-0 group cursor-pointer">
+      <!-- Vòng chữ SVG xoay liên tục -->
+      <svg class="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
+        <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+        <text class="text-[11px] font-bold uppercase tracking-[0.2em] fill-stone-400">
+          <textPath href="#circlePath" startOffset="0%">Scroll to explore • Scroll to explore •</textPath>
+        </text>
+      </svg>
+      <!-- Nút mũi tên ở giữa, hiệu ứng nảy khi hover -->
+      <div class="w-12 h-12 bg-[#173124] rounded-full flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#974728] transition-all duration-500 shadow-xl">
+        <span class="material-symbols-outlined text-[20px] animate-bounce">arrow_downward</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  <!-- Mosaic Grid Layout -->
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-32">
     <app-homestay-item
       *ngFor="let item of homestaysRespone; let i = index"
       [homestay]="item"
-      [layoutType]="i % 5"
+      [layoutType]="i % 4" 
       [ngClass]="{
-        'md:col-span-8': i % 5 === 0 || i % 5 === 3,
-        'md:col-span-4': i % 5 === 1 || i % 5 === 2,
-        'md:col-span-12 mt-8': i % 5 === 4,
-        'mt-20 md:mt-0': i % 5 === 1 
+        'md:col-span-7': i % 4 === 0,
+        'md:col-span-5 self-center md:mt-24': i % 4 === 1,
+        'md:col-span-4': i % 4 === 2,
+        'md:col-span-8': i % 4 === 3,
+        'md:col-start-2 md:col-span-10': i % 6 === 5 
       }">
     </app-homestay-item>
   </div>
-
 </main>

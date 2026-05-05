@@ -1,75 +1,40 @@
 <section class="py-16 border-t border-outline-variant/15">
-    <!-- Header: Đồng bộ hoàn toàn với các section trước -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-        <div>
-            <h3 class="text-3xl font-headline font-bold text-primary tracking-tight">Location</h3>
-            <p class="text-on-surface-variant mt-2 font-medium">Nestled in the heart of the volcanic wilderness.</p>
-        </div>
+    <div class="mb-10">
+        <h3 class="text-3xl font-headline font-bold text-primary tracking-tight">Location</h3>
+        <p class="text-on-surface-variant mt-2 font-medium">Nestled in the heart of the {{ homestay()?.city }} wilderness.</p>
     </div>
 
-    <!-- Map Container: Tràn viền (Full-width) với thẻ trượt nổi (Floating Card) -->
-    <div class="relative w-full h-[550px] md:h-[650px] bg-surface-container-low rounded-[2rem] border border-outline-variant/20 overflow-hidden group">
+    <div class="relative w-full h-[550px] md:h-[650px] rounded-[2rem] border border-outline-variant/20 overflow-hidden shadow-inner">
         
-        <!-- Ảnh Map: Màu sắc tự nhiên nhưng độ tương phản tốt, mượt mà -->
-        <img alt="Topographic map" 
-            class="absolute inset-0 w-full h-full object-cover saturate-[0.6] contrast-[1.05] brightness-[0.95] transition-transform duration-[5s] ease-out group-hover:scale-105"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW8uNsDHRR6EpwaiA-XXyHkigVqemfI3Edd9nvWMln3LNdqQ6s17YdBdugCY79RLC0UQNKFWM7QdgjegzqXRF4soZ8n0_YC2J8-L3P1HsT16jQa1pOhR0OLBKZEVLodJsMAN2dCv_OLw6d-w7EXmWWuCOwbAtPrHdPfqWYXF5UBxn-O2-sZoC0LfiAoFV7sovhgcUBvWRXndpiaTEuDavD8enkUGgYXALlXi4UQDoPUsGPY_XTG0FktlEIuEIGQTIMIcDCelo5Vew" />
+        <!-- ĐÂY LÀ NƠI BẢN ĐỒ HIỂN THỊ -->
+        <div #mapContainer class="absolute inset-0 z-0"></div>
         
-        <!-- Lớp phủ Gradient: Làm dịu nền map để thẻ thông tin nổi bật hơn -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60"></div>
+        <!-- Overlay mờ để các nút bấm nổi bật hơn -->
+        <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
 
-        <!-- Custom Marker: Chuẩn thiết kế Pin của các app bản đồ hiện đại -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none mb-12">
-            <div class="relative flex items-center justify-center">
-                <!-- Hiệu ứng sóng (Pulse) -->
-                <div class="absolute w-20 h-20 bg-primary/20 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
-                <!-- Vỏ Pin màu trắng -->
-                <div class="relative w-14 h-14 bg-white rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.2)] flex items-center justify-center border-4 border-white transform transition-transform duration-500 group-hover:-translate-y-2">
-                    <!-- Lõi Pin màu Primary -->
-                    <div class="w-full h-full bg-primary rounded-full flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
-                    </div>
-                </div>
-                <!-- Bóng đổ dưới Pin -->
-                <div class="absolute -bottom-4 w-6 h-2 bg-black/30 blur-[3px] rounded-[100%] transition-transform duration-500 group-hover:scale-75 group-hover:opacity-50"></div>
-            </div>
-        </div>
-
-        <!-- Nút Fullscreen ở góc phải trên -->
-        <button class="absolute top-6 right-6 w-12 h-12 bg-white text-primary rounded-full shadow-md flex items-center justify-center hover:bg-surface-container-lowest hover:scale-105 transition-all duration-300">
-            <span class="material-symbols-outlined text-[20px]">fullscreen</span>
-        </button>
-
-        <!-- THE FLOATING INFO CARD (Điểm nhấn chuẩn "Web lớn") -->
-        <!-- Mobile: Nằm dưới đáy, cách lề 16px. Desktop: Nằm góc trái dưới, cách lề 32px -->
-        <div class="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-auto md:w-[380px] bg-white p-6 rounded-[1.5rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border border-outline-variant/10 transform transition-transform duration-500 hover:-translate-y-1">
-            
-            <!-- Địa chỉ -->
+        <!-- THE FLOATING INFO CARD (Giữ nguyên giao diện đẹp của bạn) -->
+        <div class="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-auto md:w-[380px] bg-white/90 backdrop-blur-md p-6 rounded-[1.5rem] shadow-2xl border border-white/20 z-20 transition-all hover:-translate-y-1">
             <div class="mb-5">
                 <p class="text-[10px] uppercase tracking-widest text-primary font-bold mb-1">Exact Location</p>
-                <h4 class="font-headline font-bold text-xl text-primary leading-tight mb-2">The Obsidian Monolith</h4>
-                <p class="text-sm text-on-surface-variant font-medium">42 Lava Field Road, Reykjavik, Iceland</p>
+                <h4 class="font-headline font-bold text-xl text-primary leading-tight mb-2">{{ homestay()?.name }}</h4>
+                <p class="text-sm text-on-surface-variant font-medium">{{ homestay()?.address }}, {{ homestay()?.city }}</p>
             </div>
             
-            <!-- Tọa độ (Ngăn cách bằng line mỏng) -->
-            <div class="flex items-center gap-6 py-4 border-y border-outline-variant/20 mb-6">
-                <div>
+            <div class="flex items-center gap-6 py-4 border-y border-outline-variant/10 mb-6">
+                <div class="flex-1">
                     <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Lat</p>
-                    <p class="text-sm font-mono font-bold text-primary">64.1265° N</p>
+                    <p class="text-sm font-mono font-bold text-primary">{{ homestay()?.latitude }}</p>
                 </div>
-                <div class="h-8 w-[1px] bg-outline-variant/20"></div>
-                <div>
+                <div class="flex-1 border-l border-outline-variant/10 pl-6">
                     <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Long</p>
-                    <p class="text-sm font-mono font-bold text-primary">21.8174° W</p>
+                    <p class="text-sm font-mono font-bold text-primary">{{ homestay()?.longitude }}</p>
                 </div>
             </div>
             
-            <!-- Nút Hành động -->
-            <button class="w-full bg-primary text-on-primary py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm">
+            <button (click)="openDirections()" class="w-full bg-[#173124] text-white py-4 rounded-xl font-bold text-sm hover:bg-[#12261c] transition-all flex items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-[20px]">directions</span>
-                Get Directions
+                Open in Google Maps
             </button>
         </div>
-
     </div>
 </section>

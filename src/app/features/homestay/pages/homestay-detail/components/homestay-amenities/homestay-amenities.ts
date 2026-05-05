@@ -8,19 +8,15 @@ import { HomestayService } from '../../../../../../core/services/homestay/homest
   styleUrl: './homestay-amenities.css',
 })
 export class HomestayAmenities implements OnInit {
-  constructor(private homestayService: HomestayService) {}
-  ngOnInit(): void {
-    console.log(this.amenities())
-  }
- 
+  constructor(private homestayService: HomestayService) { }
 
-    // Lấy dữ liệu trực tiếp từ Service (Reactive)
-    // Nếu dùng Signal trong HTML: {{ homestayService.currentHomestay()?.name }}
-    get homestay() {
-        return this.homestayService.currentHomestay();
-    }
-    amenities = computed(() => this.homestayService.currentHomestay() || []);
+  amenities = computed(() => this.homestayService.currentHomestay()?.amenities || []); ngOnInit(): void {
 
 
-    
+
+
+
+
+
+}
 }
