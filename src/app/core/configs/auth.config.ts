@@ -27,5 +27,5 @@ export const authCodeFlowConfig: AuthConfig & { useIdTokenHintForLogout?: boolea
   // 3. Thêm cấu hình này để thư viện tự lấy ID Token từ storage
   useIdTokenHintForLogout: true, 
 
-  showDebugInformation: true, // Bật lên để xem log ở Console trình duyệt
+  showDebugInformation: true, 
 };
