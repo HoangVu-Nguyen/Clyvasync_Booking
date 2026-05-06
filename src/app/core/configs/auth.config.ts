@@ -3,7 +3,7 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 export const authCodeFlowConfig: AuthConfig & { useIdTokenHintForLogout?: boolean } = {
   // issuer: 'https://localhost:8443',
   issuer: 'https://vcebook.io.vn',
-  clientId: 'clyvasync-client',
+  clientId: 'clyvasync-client-key',
   responseType: 'code',
 
   scope: 'openid profile email offline_access',
@@ -19,7 +19,7 @@ export const authCodeFlowConfig: AuthConfig & { useIdTokenHintForLogout?: boolea
   // 2. QUAN TRỌNG: Xóa hoặc Comment dòng logoutUrl đi
   // Spring Authorization Server sẽ tự cung cấp endpoint qua Discovery Document (.well-known)
   // Nếu muốn ép buộc, hãy dùng đúng endpoint: 
-  // logoutUrl: 'https://localhost:8443/connect/logout', 
+   logoutUrl: 'https://vcebook.io.vn/connect/logout', 
 
   disablePKCE: false,
   requireHttps: true, // Vì bạn đang dùng https://localhost:8443 nên hãy để true
