@@ -46,6 +46,6 @@ export class VoucherService {
   }
 
   deactivateHostVoucher(id: number): Observable<ApiResponse<void>> {
-    return this.apiService.delete<ApiResponse<void>>(`/api/v1/host/${id}/deactivate`);
+    return this.apiService.put<ApiResponse<void>>(`/api/v1/host/${id}/deactivate`, {});
   }
 }
