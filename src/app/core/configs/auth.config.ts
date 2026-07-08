@@ -21,6 +21,7 @@ export const authCodeFlowConfig: AuthConfig & { useIdTokenHintForLogout?: boolea
   // Spring Authorization Server sẽ tự cung cấp endpoint qua Discovery Document (.well-known)
   // Nếu muốn ép buộc, hãy dùng đúng endpoint: 
   logoutUrl: 'https://vunguyen.tokyo/connect/logout',
+  // logoutUrl: 'https://vunguyen.tokyo/connect/logout',
 
   disablePKCE: false,
   requireHttps: true, // Vì bạn đang dùng https://localhost:8443 nên hãy để true
