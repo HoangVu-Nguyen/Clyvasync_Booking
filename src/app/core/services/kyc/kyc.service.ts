@@ -15,10 +15,7 @@ export class KycService {
     constructor(private apiService: ApiService) { }
     private profileIdSubject = new BehaviorSubject<number | null>(null);
     profileId$ = this.profileIdSubject.asObservable();
-    /**
-     * Bước 1: Gửi thông tin định danh (CCCD & Bank)
-     * Trả về Long (profileId) để Frontend dùng cho bước tiếp theo
-     */
+
     createProfile(request: HostKycProfileRequest): Observable<ApiResponse<number>> {
         const endpoint = `/api/v1/kyc/profile`;
         return this.apiService.post<ApiResponse<number>>(endpoint, request);

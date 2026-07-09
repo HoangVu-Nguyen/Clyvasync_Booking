@@ -217,8 +217,6 @@ export class AddProperty implements AfterViewInit, OnDestroy {
                      '';
     }
 
-    // NHỊP 2: NẾU VẪN RỖNG (Do Nominatim trả về cấu trúc thiếu ở một số tỉnh như Bình Dương)
-    // Tự động chuyển sang thuật toán cào chuỗi ngược từ display_name - ĐẢM BẢO KHÔNG BỊ TRỐNG
     if (!detectedCity && suggestion.display_name) {
       detectedCity = this.extractCityFromDisplayName(suggestion.display_name);
     }
